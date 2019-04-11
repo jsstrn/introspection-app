@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "start": "react-scripts --max_old_space_size=8192 start",
-    "build": "react-scripts build",
+    "build": "react-scripts --max_old_space_size=8192 build",
     "test": "react-scripts test",
     "test:once": "react-scripts test --no-watch",
     "eject": "react-scripts eject"
