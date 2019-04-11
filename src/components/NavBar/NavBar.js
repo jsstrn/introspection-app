@@ -31,6 +31,11 @@ function NavBar() {
           </Link>
         </NavItem>
         <NavItem>
+          <Link to="/slice">
+            <h4 className="text-muted font-weight-bolder">Detailed</h4>
+          </Link>
+        </NavItem>
+        <NavItem>
           <Link to="/profile">
             <img
               alt="avatar"
