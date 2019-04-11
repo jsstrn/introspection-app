@@ -3,9 +3,7 @@ jobs:
   build:
     docker:
       - image: circleci/node:10.15.3
-    working_directory: ~/repo
-    environment:
-      CI: "true"
+
     steps:
       - checkout
       - restore_cache:
@@ -20,70 +18,97 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: npm test
+      - run: npm run build
+
+      - run: mkdir -p /tmp/build
+
+      - run: cp -r build /tmp
+
+      - persist_to_workspace:
+          root: /tmp
+          paths:
+            - build/*
 
   deploy-auto:
     docker:
-      - image: buildpack-deps:trusty
+      - image: circleci/node:10.15.3
+
     environment:
-      HEROKU_APP_NAME: "auto-introspection-app"
+      NETLIFY_SITE_ID: '6a31461c-b55e-4aed-9477-4e34df87bdae'
+
     steps:
-      - checkout
+      - attach_workspace:
+          at: /tmp
+
       - run:
-          name: Deploy auto environment to Heroku
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+          name: Deploy auto environment to Netlify
+          command: npx netlify-cli deploy -p --dir=/tmp/build --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
 
   smoke-test-auto:
     docker:
       - image: buildpack-deps:trusty
+
     environment:
-      HEROKU_APP_NAME: "auto-introspection-app"
+      NETLIFY_APP_NAME: 'auto-introspection-app'
+
     steps:
       - run:
           name: Smoke test for auto environment
-          command: curl --fail https://$HEROKU_APP_NAME.herokuapp.com
+          command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
-  deploy-test:
+  deploy-qa:
+    docker:
+      - image: circleci/node:10.15.3
+
+    environment:
+      NETLIFY_SITE_ID: '9d76611c-3f91-42e4-bcf5-290c6e8de93e'
+
+    steps:
+      - attach_workspace:
+          at: /tmp
+
+      - run:
+          name: Deploy qa environment to Netlify
+          command: npx netlify-cli deploy -p --dir=/tmp/build --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
+
+  smoke-test-qa:
     docker:
       - image: buildpack-deps:trusty
-    environment:
-      HEROKU_APP_NAME: "test-introspection-app"
-    steps:
-      - checkout
-      - run:
-          name: Deploy test environment to Heroku
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
 
-  smoke-test-test:
-    docker:
-      - image: buildpack-deps:trusty
     environment:
-      HEROKU_APP_NAME: "test-introspection-app"
+      NETLIFY_APP_NAME: 'qa-introspection-app'
+
     steps:
       - run:
-          name: Smoke test for test environment
-          command: curl --fail https://$HEROKU_APP_NAME.herokuapp.com
+          name: Smoke test for qa environment
+          command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
   deploy-staging:
     docker:
-      - image: buildpack-deps:trusty
+      - image: circleci/node:10.15.3
+
     environment:
-      HEROKU_APP_NAME: "staging-introspection-app"
+      NETLIFY_SITE_ID: '67d966d5-32bd-49b5-907c-b127e81ffa78'
+
     steps:
-      - checkout
+      - attach_workspace:
+          at: /tmp
+
       - run:
-          name: Deploy test environment to Heroku
-          command: git push https://heroku:$HEROKU_API_KEY@git.heroku.com/$HEROKU_APP_NAME.git master
+          name: Deploy staging environment to Netlify
+          command: npx netlify-cli deploy -p --dir=/tmp/build --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
 
   smoke-test-staging:
     docker:
       - image: buildpack-deps:trusty
+
     environment:
-      HEROKU_APP_NAME: "staging-introspection-app"
+      NETLIFY_APP_NAME: 'staging-introspection-app'
+
     steps:
       - run:
           name: Smoke test for staging environment
-          command: curl --fail https://$HEROKU_APP_NAME.herokuapp.com
+          command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
 workflows:
   version: 2
@@ -100,16 +125,16 @@ workflows:
           type: approval
           requires:
             - deploy-auto
-      - deploy-test:
+      - deploy-qa:
           requires:
             - hold
-      - smoke-test-test:
+      - smoke-test-qa:
           requires:
-            - deploy-test
+            - deploy-qa
       - hold-staging:
           type: approval
           requires:
-            - deploy-test
+            - deploy-qa
       - deploy-staging:
           requires:
             - hold-staging
