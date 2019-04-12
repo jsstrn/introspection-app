@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Card } from "reactstrap";
+import { Container, Row, Col } from "reactstrap";
 import HPJumbotron from "../../components/HPJumbotron/HPJumbotron";
 import Brick from "../../components/Brick/Brick";
 import SliceDetails from "../../components/SliceDetails/SliceDetails";

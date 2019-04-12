@@ -1,5 +1,3 @@
-import _ from "lodash";
-import { EMLINK } from "constants";
 const category = [
   { name: "Diversity and Inclusion", sector: [0, 45] },
   { name: "Religious Minorities", sector: [45, 90] },

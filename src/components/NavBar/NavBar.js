@@ -41,7 +41,7 @@ function NavBar() {
               alt="avatar"
               width="50px"
               height="50px"
-              src="https://semantic-ui.com/images/avatar/large/steve.jpg"
+              src="https://semantic-ui.com/images/avatar2/large/kristy.png"
               className="rounded-circle"
             />
             <span className="text-muted font-weight-bolder"> Esther T.</span>

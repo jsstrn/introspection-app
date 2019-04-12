@@ -33,7 +33,7 @@ export class AdminPage extends Component {
       if (res.status !== 201) {
         Alert.warning("File upload failed, please try again", alertOpts);
       } else {
-        Alert.info("Upload successful👍  ", alertOpts);
+        Alert.info("Upload successful", alertOpts);
         window.setTimeout(() => {
           this.props.history.push("/");
         }, 1500);
@@ -54,8 +54,7 @@ export class AdminPage extends Component {
     return (
       <Container
         className="mx-auto text-center mt-5"
-        style={{ width: "100vw" }}
-      >
+        style={{ width: "100vw" }}>
         <h1 className="text-info font-weight-bolder">Admin Page</h1>
         <h3>🗄 Upload CSV File</h3>
         <form
@@ -63,8 +62,7 @@ export class AdminPage extends Component {
           action="upload"
           method="post"
           encType="multipart/form-data"
-          onSubmit={this.handleSubmit}
-        >
+          onSubmit={this.handleSubmit}>
           <input
             type="file"
             ref={input => {
@@ -76,7 +74,7 @@ export class AdminPage extends Component {
             onChange={this.handleChange}
           />
           <button type="submit" data-testid="file-submit">
-            🚚💨 Send
+            Send
           </button>
         </form>
       </Container>

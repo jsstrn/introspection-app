@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Container, Button, Row } from "reactstrap";
+import { Table, Container, Button } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class Wall extends Component {
@@ -21,16 +21,14 @@ export default class Wall extends Component {
             outline
             color="success"
             size="lg"
-            active
-          >
+            active>
             2018
           </Button>
           <Button
             style={{ marginLeft: "1em" }}
             outline
             color="success"
-            size="lg"
-          >
+            size="lg">
             2019
           </Button>
         </div>

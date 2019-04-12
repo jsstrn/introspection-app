@@ -1,14 +1,5 @@
 import React from "react";
-import {
-  Card,
-  Button,
-  CardImg,
-  CardTitle,
-  CardText,
-  CardDeck,
-  CardSubtitle,
-  CardBody
-} from "reactstrap";
+import { Card, CardTitle, CardDeck, CardSubtitle, CardBody } from "reactstrap";
 import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getCategoryBrick } from "../../services/serveIntrospections";
 
