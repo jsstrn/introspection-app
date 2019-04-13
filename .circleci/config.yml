@@ -45,7 +45,7 @@ jobs:
 
       - run:
           name: Deploy auto environment to Netlify
-          command: npx netlify-cli deploy -p --dir=/tmp/build --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
+          command: npx netlify-cli deploy --prod --dir=/tmp/build --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
 
   smoke-test-auto:
     docker:
