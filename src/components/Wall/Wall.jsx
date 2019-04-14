@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { Table, Container, Button } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 
 export default class Wall extends Component {
   state = {
@@ -21,14 +20,16 @@ export default class Wall extends Component {
             outline
             color="success"
             size="lg"
-            active>
+            active
+          >
             2018
           </Button>
           <Button
             style={{ marginLeft: "1em" }}
             outline
             color="success"
-            size="lg">
+            size="lg"
+          >
             2019
           </Button>
         </div>
@@ -45,7 +46,7 @@ export default class Wall extends Component {
             {categories.map((item, index) => (
               <tr key={index}>
                 <th scope="row">
-                  <FontAwesomeIcon icon="user-circle" /> {item}
+                  <i class="fas fa-user-circle" /> {item}
                 </th>
               </tr>
             ))}

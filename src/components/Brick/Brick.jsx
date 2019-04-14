@@ -1,6 +1,5 @@
 import React from "react";
 import { Card, CardTitle, CardDeck, CardSubtitle, CardBody } from "reactstrap";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getCategoryBrick } from "../../services/serveIntrospections";
 
 function Brick(props) {
@@ -9,7 +8,7 @@ function Brick(props) {
   return (
     <div>
       <h3>
-        <FontAwesomeIcon icon="user-circle" /> Advocate Leader
+        <i class="fas fa-user-circle" /> Advocate Leader
       </h3>
       <CardDeck>
         {Object.entries(brick.action).map(([key, value], index) => (
