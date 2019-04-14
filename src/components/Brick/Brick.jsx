@@ -8,7 +8,7 @@ function Brick(props) {
   return (
     <div>
       <h3>
-        <i class="fas fa-user-circle" /> Advocate Leader
+        <i className="fas fa-user-circle" /> Advocate Leader
       </h3>
       <CardDeck>
         {Object.entries(brick.action).map(([key, value], index) => (

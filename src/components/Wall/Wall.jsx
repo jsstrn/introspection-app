@@ -46,7 +46,7 @@ export default class Wall extends Component {
             {categories.map((item, index) => (
               <tr key={index}>
                 <th scope="row">
-                  <i class="fas fa-user-circle" /> {item}
+                  <i className="fas fa-user-circle" /> {item}
                 </th>
               </tr>
             ))}
