@@ -46,29 +46,15 @@ export default class Wall extends Component {
                 <th scope="row">
                   <i className="fas fa-user-circle" /> {item}
                 </th>
-                <td>1</td>
-                <td>2</td>
-                <td>3</td>
+                {Object.entries(getCategoryBrick(item, office)).map(
+                  (num, index) => (
+                    <td data-testid={`${item}-${num[0]}`} key={index}>
+                      {num[1]}
+                    </td>
+                  )
+                )}
               </tr>
             ))}
-            <tr>
-              <th scope="row">1</th>
-              <td>Mark</td>
-              <td>Otto</td>
-              <td>@mdo</td>
-            </tr>
-            <tr>
-              <th scope="row">2</th>
-              <td>Jacob</td>
-              <td>Thornton</td>
-              <td>@fat</td>
-            </tr>
-            <tr>
-              <th scope="row">3</th>
-              <td>Larry</td>
-              <td>the Bird</td>
-              <td>@twitter</td>
-            </tr>
           </tbody>
         </Table>
       </Container>

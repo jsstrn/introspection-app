@@ -24,12 +24,32 @@ const data = [
         level: 3,
         action: ["would like to explore", "would like to share"]
       },
-      { category: category[2].name, level: 2, action: ["would like to learn"] },
-      { category: category[3].name, level: 2, action: ["would like to learn"] },
-      { category: category[4].name, level: 1, action: ["would like to learn"] },
-      { category: category[5].name, level: 2, action: ["would like to learn"] },
+      {
+        category: category[2].name,
+        level: 2,
+        action: ["would like to explore"]
+      },
+      {
+        category: category[3].name,
+        level: 2,
+        action: ["would like to explore"]
+      },
+      {
+        category: category[4].name,
+        level: 1,
+        action: ["would like to explore"]
+      },
+      {
+        category: category[5].name,
+        level: 2,
+        action: ["would like to explore"]
+      },
       { category: category[6].name, level: 4, action: ["would like to share"] },
-      { category: category[7].name, level: 2, action: ["would like to learn"] }
+      {
+        category: category[7].name,
+        level: 2,
+        action: ["would like to explore"]
+      }
     ]
   },
   {
@@ -46,7 +66,11 @@ const data = [
       { category: category[1].name, level: 4, action: ["would like to share"] },
       { category: category[2].name, level: 4, action: ["would like to share"] },
       { category: category[3].name, level: 4, action: ["would like to share"] },
-      { category: category[4].name, level: 1, action: ["would like to learn"] },
+      {
+        category: category[4].name,
+        level: 1,
+        action: ["would like to explore"]
+      },
       {
         category: category[5].name,
         level: 4,
@@ -176,8 +200,7 @@ const getCategoryBrick = (categoryName, office) => {
       return brick.action[action]++;
     });
   });
-
-  return brick;
+  return brick.action;
 };
 
 export { findOne, findAllExcept, getCategoriesByOffice, getCategoryBrick };
