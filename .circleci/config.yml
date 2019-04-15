@@ -71,7 +71,7 @@ jobs:
           at: /tmp
 
       - run:
-          name: Deploy qa environment to Netlify
+          name: Deploy QA environment to Netlify
           command: npx netlify-cli deploy --prod --dir=/tmp/build --site=$NETLIFY_SITE_ID --auth=$NETLIFY_AUTH_TOKEN
 
   smoke-test-qa:
@@ -83,7 +83,7 @@ jobs:
 
     steps:
       - run:
-          name: Smoke test for qa environment
+          name: Smoke test for QA environment
           command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
   deploy-staging:
