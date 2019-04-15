@@ -19,7 +19,7 @@ jobs:
             - node_modules
           key: v1-dependencies-{{ checksum "package.json" }}
 
-      - run: CI=true npm test
+      - run: npm run test:ci
 
       - run: npm run build
 
