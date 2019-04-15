@@ -146,16 +146,12 @@ const findAllExcept = tarName => {
 };
 
 const getCategoriesByOffice = office => {
-  const tarOffice = data.filter(a => a.office === office);
-  const categories = new Set();
-  tarOffice.forEach(empl =>
-    empl.categories.forEach(elem => {
-      if (categories.has) categories.add(elem.category);
-    })
-  );
-  return Array.from(categories).map(elem => elem.name);
+  const tarOfficeEmployees = data.filter(a => a.office === office);
+  const categories = tarOfficeEmployees[0].categories.map(cat => cat.category);
+  return categories;
 };
 
+//if action is served by BE, will need to update
 const getCategoryBrick = (categoryName, office) => {
   const brick = {
     name: categoryName,
@@ -174,7 +170,7 @@ const getCategoryBrick = (categoryName, office) => {
       if (!brick.action[action]) {
         brick.action[action] = 0;
       }
-      brick.action[action] += 1;
+      brick.action[action]++;
     });
   });
 
