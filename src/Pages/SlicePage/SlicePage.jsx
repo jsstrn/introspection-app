@@ -1,8 +1,9 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import HPJumbotron from "../../components/HPJumbotron/HPJumbotron";
-import Brick from "../../components/Brick/Brick";
+
 import SliceDetails from "../../components/SliceDetails/SliceDetails";
+import BrickContainer from "../../components/BrickContainer/BrickContainer";
 
 function SlicePage(props) {
   const categoryName = "Religious Minorities";
@@ -10,14 +11,14 @@ function SlicePage(props) {
   return (
     <>
       <HPJumbotron />
-      <Container className="mx-auto">
+      <Container className="mx-auto mb7">
         <Row>
           <SliceDetails category={categoryName} />
         </Row>
         <Row>
           <Col xs="12" md="6" />
           <Col xs="12" md="6">
-            <Brick categoryName={categoryName} office={office} />
+            <BrickContainer />
           </Col>
         </Row>
       </Container>
