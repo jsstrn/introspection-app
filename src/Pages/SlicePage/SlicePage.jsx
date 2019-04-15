@@ -1,13 +1,12 @@
 import React from "react";
 import { Container, Row, Col } from "reactstrap";
 import HPJumbotron from "../../components/HPJumbotron/HPJumbotron";
-
 import SliceDetails from "../../components/SliceDetails/SliceDetails";
 import BrickContainer from "../../components/BrickContainer/BrickContainer";
 
 function SlicePage(props) {
   const categoryName = "Religious Minorities";
-  const office = "Singapore";
+
   return (
     <>
       <HPJumbotron />
