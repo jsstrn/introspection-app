@@ -1,3 +1,5 @@
+import _ from "lodash";
+
 const category = [
   { name: "Diversity and Inclusion", sector: [0, 45] },
   { name: "Religious Minorities", sector: [45, 90] },
@@ -22,12 +24,28 @@ const data = [
         level: 3,
         action: ["would like to explore", "would like to share"]
       },
-      { category: category[2].name, level: 2, action: ["would like to learn"] },
-      { category: category[3].name, level: 2, action: ["would like to learn"] },
-      { category: category[4].name, level: 1, action: ["would like to learn"] },
-      { category: category[5].name, level: 2, action: ["would like to learn"] },
+      {
+        category: category[2].name,
+        level: 2,
+        action: ["would like to deepen"]
+      },
+      {
+        category: category[3].name,
+        level: 2,
+        action: ["would like to deepen"]
+      },
+      {
+        category: category[4].name,
+        level: 1,
+        action: ["would like to deepen"]
+      },
+      {
+        category: category[5].name,
+        level: 2,
+        action: ["would like to deepen"]
+      },
       { category: category[6].name, level: 4, action: ["would like to share"] },
-      { category: category[7].name, level: 2, action: ["would like to learn"] }
+      { category: category[7].name, level: 2, action: ["would like to deepen"] }
     ]
   },
   {
@@ -44,7 +62,11 @@ const data = [
       { category: category[1].name, level: 4, action: ["would like to share"] },
       { category: category[2].name, level: 4, action: ["would like to share"] },
       { category: category[3].name, level: 4, action: ["would like to share"] },
-      { category: category[4].name, level: 1, action: ["would like to learn"] },
+      {
+        category: category[4].name,
+        level: 1,
+        action: ["would like to deepen"]
+      },
       {
         category: category[5].name,
         level: 4,
@@ -187,26 +209,26 @@ const getBrickTable = (office, categoryName) => {
 const getCategoryBrick = (categoryName, office) => {
   const brick = {
     name: categoryName,
-    action: {}
+    action: {
+      "would like to explore": 0,
+      "would like to deepen": 0,
+      "would like to share": 0
+    }
   };
-  let tarOfficeCategories = data
+  let tarEmployeeData = data
     .filter(a => a.office === office)
-    .map(empl => empl.categories)
-    .flat();
-  tarOfficeCategories = tarOfficeCategories.filter(
+    .map(empl => empl.categories);
+
+  tarEmployeeData = _.flatten(tarEmployeeData).filter(
     elem => elem.category === categoryName
   );
 
-  tarOfficeCategories.forEach(empl => {
-    empl.action.forEach(action => {
-      if (!brick.action[action]) {
-        brick.action[action] = 0;
-      }
-      brick.action[action]++;
+  tarEmployeeData.map(empl => {
+    return empl.action.map(action => {
+      return brick.action[action]++;
     });
   });
-
-  return brick;
+  return brick.action;
 };
 
 export {

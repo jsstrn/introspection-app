@@ -10,7 +10,7 @@ export default class Wall extends Component {
     const { office } = this.state;
     const { categories } = this.props;
     return (
-      <Container className="mx-auto mt-5">
+      <Container className="mx-auto mt-5 mb6">
         <h1 className="text-info text-center font-weight-bolder mb-5">
           {`${office}'s Action Plan`}
         </h1>
@@ -20,14 +20,16 @@ export default class Wall extends Component {
             outline
             color="success"
             size="lg"
-            active>
+            active
+          >
             2018
           </Button>
           <Button
             style={{ marginLeft: "1em" }}
             outline
             color="success"
-            size="lg">
+            size="lg"
+          >
             2019
           </Button>
         </div>
