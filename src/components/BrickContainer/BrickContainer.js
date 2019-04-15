@@ -6,7 +6,7 @@ import { getBrickTable } from "../../services/serveIntrospections";
 class BrickContainer extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [[], [], []], action: "", brickObject: {} };
+    this.state = { data: [[], [], []], tablenumber: 0, brickObject: {} };
   }
 
   componentDidMount() {
@@ -17,20 +17,24 @@ class BrickContainer extends Component {
       data[index] = val;
     });
 
-    this.setState({ data, brickObject });
+    this.setState({ data, brickObject, tablenumber: 0 });
   }
 
   handleActionSelector = event => {
-    console.log(event);
-    this.setState({ action: event.target.value });
+    this.setState({ tablenumber: event });
   };
 
   render() {
-    console.log(this.state.data);
+    const { tablenumber, data } = this.state;
+
     return (
       <React.Fragment>
-        <Brick count={this.state.data.map(a => a.length)} />
-        <BrickTable names={this.state.data[2]} />
+        <Brick
+          count={this.state.data.map(a => a.length)}
+          handleActions={this.handleActionSelector}
+          tablenumber={tablenumber}
+        />
+        <BrickTable names={data[tablenumber]} />
       </React.Fragment>
     );
   }

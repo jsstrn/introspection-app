@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "reactstrap";
 
-function Brick({ count, handleActions }) {
+function Brick({ count, handleActions, tablenumber }) {
   return (
     <Container className="mb5">
       <p className="f4 gray fw7">
@@ -9,18 +9,19 @@ function Brick({ count, handleActions }) {
       </p>
       <div className="flex w-100 tc gray justify-between">
         <div
-          className="br4 bg-lightest-blue w-30 pointer"
-          value="explore"
-          onClick={() => handleActions()}
+          className={`br4 ${
+            tablenumber === 0 ? "bg-lightest-blue" : undefined
+          } w-30 pointer`}
+          onClick={() => handleActions(0)}
         >
           <p className="f5 fw5 mt2">Explore</p>
           <p className="f3 fw7">{count[0]}</p>
-          <p />
         </div>
         <div
-          className="br4 bg-lightest-blue w-30"
-          value="deepen"
-          onClick={() => handleActions()}
+          className={`br4 ${
+            tablenumber === 1 ? "bg-lightest-blue" : undefined
+          } w-30 pointer`}
+          onClick={() => handleActions(1)}
         >
           <p className="f5 fw5 mt2">Deepen</p>
           <p className="f3 fw7">{count[1]}</p>
@@ -29,9 +30,10 @@ function Brick({ count, handleActions }) {
           <p />
         </div>
         <div
-          className="br4 bg-lightest-blue w-30"
-          value="share"
-          onClick={() => handleActions()}
+          className={`br4 ${
+            tablenumber === 2 ? "bg-lightest-blue" : undefined
+          } w-30 pointer`}
+          onClick={() => handleActions(2)}
         >
           <p className="f5 fw5 mt2">Share</p>
           <p className="f3 fw7">{count[2]}</p>
