@@ -8,7 +8,7 @@ const BrickTable = ({ names }) => {
   return (
     <Container>
       <p className="gray fw7">Explore</p>
-      <div className="flex tl gray">
+      <div className="flex tc gray justify-around">
         <div className="w-third">
           {names.slice(0, third).map((a, index) => (
             <p key={index}>{a}</p>

@@ -3,7 +3,7 @@ import { Container } from "reactstrap";
 
 function Brick({ count, handleActions, tablenumber }) {
   return (
-    <Container className="mb5">
+    <Container className="mb5 ">
       <p className="f4 gray fw7">
         <i className="fas fa-user-circle" /> Advocate Leader
       </p>
