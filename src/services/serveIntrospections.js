@@ -1,3 +1,5 @@
+import "../polyfills/array.prototype.flat";
+
 const category = [
   { name: "Diversity and Inclusion", sector: [0, 45] },
   { name: "Religious Minorities", sector: [45, 90] },
