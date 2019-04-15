@@ -1,4 +1,8 @@
 version: 2
+
+orbs:
+  cypress: cypress-io/cypress@1.6.0
+
 jobs:
   build:
     docker:
