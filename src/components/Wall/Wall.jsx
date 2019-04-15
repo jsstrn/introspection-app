@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Table, Container, Button } from "reactstrap";
-
+import { getCategoryBrick } from "../../services/serveIntrospections";
 export default class Wall extends Component {
   state = {
     office: "Singapore"
@@ -20,16 +20,14 @@ export default class Wall extends Component {
             outline
             color="success"
             size="lg"
-            active
-          >
+            active>
             2018
           </Button>
           <Button
             style={{ marginLeft: "1em" }}
             outline
             color="success"
-            size="lg"
-          >
+            size="lg">
             2019
           </Button>
         </div>
@@ -48,15 +46,17 @@ export default class Wall extends Component {
                 <th scope="row">
                   <i className="fas fa-user-circle" /> {item}
                 </th>
+                <td>1</td>
+                <td>2</td>
+                <td>3</td>
               </tr>
             ))}
-            {/* <tr>
+            <tr>
               <th scope="row">1</th>
               <td>Mark</td>
               <td>Otto</td>
               <td>@mdo</td>
             </tr>
-            }
             <tr>
               <th scope="row">2</th>
               <td>Jacob</td>
@@ -68,7 +68,7 @@ export default class Wall extends Component {
               <td>Larry</td>
               <td>the Bird</td>
               <td>@twitter</td>
-            </tr> */}
+            </tr>
           </tbody>
         </Table>
       </Container>

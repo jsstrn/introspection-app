@@ -17,7 +17,7 @@ class Overview extends Component {
   }
 
   render() {
-    const { categories } = this.state;
+    const { categories, office } = this.state;
     return (
       <React.Fragment>
         <HPJumbotron />
@@ -26,7 +26,7 @@ class Overview extends Component {
         </Container>
         <hr />
         <Container className="mx-auto" style={{ width: "100vw" }}>
-          <Wall categories={categories} />
+          <Wall categories={categories} office={office} />
         </Container>
       </React.Fragment>
     );

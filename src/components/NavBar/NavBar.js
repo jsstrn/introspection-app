@@ -1,10 +1,11 @@
 import React from "react";
 import { Nav, NavItem } from "reactstrap";
 import { NavLink as Link } from "react-router-dom";
+import "./NavBar.css";
 
 function NavBar() {
   return (
-    <div style={{ backgroundColor: "#c3eee7" }} className="pt-4 pb-2">
+    <div className="pt-4 pb-2 navcolor">
       <Nav className="d-flex flex-row justify-content-around" navbar>
         <NavItem>
           <Link to="/home" data-testid="homepage-link">
