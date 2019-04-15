@@ -166,7 +166,7 @@ const getCategoryBrick = (categoryName, office) => {
     .map(empl => empl.categories)
     .flat();
   tarOfficeCategories = tarOfficeCategories.filter(
-    elem => elem.category === "Religious Minorities"
+    elem => elem.category === categoryName
   );
 
   tarOfficeCategories.forEach(empl => {
