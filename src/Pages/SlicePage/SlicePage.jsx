@@ -10,7 +10,7 @@ function SlicePage(props) {
   return (
     <>
       <HPJumbotron />
-      <Container className="mx-auto mb7">
+      <Container className="mx-auto mb5">
         <Row>
           <SliceDetails category={categoryName} />
         </Row>

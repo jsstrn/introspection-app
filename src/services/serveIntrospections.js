@@ -1,5 +1,3 @@
-import "../polyfills/array.prototype.flat";
-
 const category = [
   { name: "Diversity and Inclusion", sector: [0, 45] },
   { name: "Religious Minorities", sector: [45, 90] },
@@ -24,32 +22,12 @@ const data = [
         level: 3,
         action: ["would like to explore", "would like to share"]
       },
-      {
-        category: category[2].name,
-        level: 2,
-        action: ["would like to explore"]
-      },
-      {
-        category: category[3].name,
-        level: 2,
-        action: ["would like to explore"]
-      },
-      {
-        category: category[4].name,
-        level: 1,
-        action: ["would like to explore"]
-      },
-      {
-        category: category[5].name,
-        level: 2,
-        action: ["would like to explore"]
-      },
+      { category: category[2].name, level: 2, action: ["would like to learn"] },
+      { category: category[3].name, level: 2, action: ["would like to learn"] },
+      { category: category[4].name, level: 1, action: ["would like to learn"] },
+      { category: category[5].name, level: 2, action: ["would like to learn"] },
       { category: category[6].name, level: 4, action: ["would like to share"] },
-      {
-        category: category[7].name,
-        level: 2,
-        action: ["would like to explore"]
-      }
+      { category: category[7].name, level: 2, action: ["would like to learn"] }
     ]
   },
   {
@@ -66,11 +44,7 @@ const data = [
       { category: category[1].name, level: 4, action: ["would like to share"] },
       { category: category[2].name, level: 4, action: ["would like to share"] },
       { category: category[3].name, level: 4, action: ["would like to share"] },
-      {
-        category: category[4].name,
-        level: 1,
-        action: ["would like to explore"]
-      },
+      { category: category[4].name, level: 1, action: ["would like to learn"] },
       {
         category: category[5].name,
         level: 4,
@@ -177,31 +151,69 @@ const getCategoriesByOffice = office => {
   return categories;
 };
 
+const getBrickElement = (office, categoryName, action) => {
+  const tarOffice = data.filter(elem => elem.office === office);
+  const persons = [];
+  tarOffice.forEach(person => {
+    if (
+      person.categories.some(category => {
+        return (
+          category.action.indexOf(action) >= 0 &&
+          category.category === categoryName
+        );
+      })
+    ) {
+      persons.push(person.name);
+    }
+  });
+  return persons;
+};
+
+const getBrickTable = (office, categoryName) => {
+  const actionList = [
+    "would like to explore",
+    "would like to deepen",
+    "would like to share"
+  ];
+  const result = {};
+  actionList.forEach(elem => (result[elem] = []));
+  actionList.forEach(
+    elem => (result[elem] = getBrickElement(office, categoryName, elem))
+  );
+  return result;
+};
+
 //if action is served by BE, will need to update
 const getCategoryBrick = (categoryName, office) => {
   const brick = {
     name: categoryName,
-    action: {
-      "would like to explore": 0,
-      "would like to deepen": 0,
-      "would like to share": 0
-    }
+    action: {}
   };
-  let tarEmployeeData = data
+  let tarOfficeCategories = data
     .filter(a => a.office === office)
     .map(empl => empl.categories)
     .flat();
-  tarEmployeeData = tarEmployeeData.filter(
+  tarOfficeCategories = tarOfficeCategories.filter(
     elem => elem.category === categoryName
   );
 
-  tarEmployeeData.map(empl => {
-    return empl.action.map(action => {
-      return brick.action[action]++;
+  tarOfficeCategories.forEach(empl => {
+    empl.action.forEach(action => {
+      if (!brick.action[action]) {
+        brick.action[action] = 0;
+      }
+      brick.action[action]++;
     });
   });
-  return brick.action;
+
+  return brick;
 };
 
-export { findOne, findAllExcept, getCategoriesByOffice, getCategoryBrick };
+export {
+  findOne,
+  findAllExcept,
+  getCategoriesByOffice,
+  getCategoryBrick,
+  getBrickTable
+};
 export default data;
