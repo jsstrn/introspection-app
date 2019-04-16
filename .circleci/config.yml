@@ -1,27 +1,51 @@
 version: 2
 
-orbs:
-  cypress: cypress-io/cypress@1.6.0
-
 jobs:
   build:
     docker:
-      - image: circleci/node:10.15.3
+      - image: cypress/base:10
+
+    environment:
+      TERM: xterm
 
     steps:
       - checkout
 
-      - run: npm install
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
 
-      - run: npm run test:ci
+      - run:
+          name: Install dependencies
+          command: npm ci
 
-      - run: npm run cy:run
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ~/.npm
+            - ~/.cache
 
-      - run: npm run build
+      - run:
+          name: Run unit tests
+          command: npm run test:ci
 
-      - run: mkdir -p /tmp/build
+      - run:
+          name: Run integration tests
+          command: npm run cy:run
 
-      - run: cp -r build /tmp
+      - run:
+          name: Create build
+          command: npm run build
+
+      - run:
+          name: Make temp folder
+          command: mkdir -p /tmp/build
+
+      - run:
+          name: Copy build to temp folder
+          command: cp -r build /tmp
 
       - persist_to_workspace:
           root: /tmp
