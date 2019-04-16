@@ -165,13 +165,13 @@ workflows:
       - end-to-end-test:
           requires:
             - smoke-test-auto
-      - hold:
+      - hold-qa:
           type: approval
           requires:
-            - deploy-auto
+            - end-to-end-test
       - deploy-qa:
           requires:
-            - hold
+            - hold-qa
       - smoke-test-qa:
           requires:
             - deploy-qa
