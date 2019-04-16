@@ -97,23 +97,6 @@ jobs:
           name: Run end to end tests
           command: $(npm bin)/cypress run --browser chrome --config baseUrl=https://auto-introspection-app.netlify.com
 
-      - run:
-          name: Create build
-          command: npm run build
-
-      - run:
-          name: Make temp folder
-          command: mkdir -p /tmp/build
-
-      - run:
-          name: Copy build to temp folder
-          command: cp -r build /tmp
-
-      - persist_to_workspace:
-          root: /tmp
-          paths:
-            - build/*
-
   deploy-qa:
     docker:
       - image: circleci/node:10.15.3
