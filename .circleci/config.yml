@@ -179,6 +179,9 @@ workflows:
       - smoke-test-auto:
           requires:
             - deploy-auto
+      - end-to-end-test:
+          requires:
+            - smoke-test-auto
       - hold:
           type: approval
           requires:
