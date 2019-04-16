@@ -2,7 +2,7 @@
 
 describe("Routes", () => {
   it("goes to home page", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
 
     cy.get("h4")
       .contains("About Introspection")
@@ -12,7 +12,7 @@ describe("Routes", () => {
   });
 
   it("goes to radar page", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
 
     cy.get("h4")
       .contains("Introspection Radar")
@@ -22,7 +22,7 @@ describe("Routes", () => {
   });
 
   it("goes to action plan page", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
 
     cy.get("h4")
       .contains("Action Plan")
@@ -32,7 +32,7 @@ describe("Routes", () => {
   });
 
   it("goes to admin panel page", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
 
     cy.get("h4")
       .contains("Admin Panel")
@@ -42,7 +42,7 @@ describe("Routes", () => {
   });
 
   it("goes to detailed page", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
     cy.get("h4")
       .contains("Detailed")
       .click();
@@ -50,7 +50,7 @@ describe("Routes", () => {
   });
 
   it("goes to profile page", () => {
-    cy.visit("http://localhost:3000/");
+    cy.visit("/");
     cy.get("span")
       .contains("Esther T")
       .click();
