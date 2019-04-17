@@ -1,7 +1,7 @@
 import React from "react";
 import { Container } from "reactstrap";
 
-function Brick({ count, handleActions, tablenumber, brickObject }) {
+function Brick({ count, handleActions, tableKey, brickObject }) {
   const entries = Object.entries(brickObject);
   return (
     <Container className="mb5 ">
@@ -13,9 +13,9 @@ function Brick({ count, handleActions, tablenumber, brickObject }) {
           return (
             <div
               className={`br4 ${
-                tablenumber === index ? "bg-lightest-blue" : undefined
+                tableKey === key ? "bg-lightest-blue" : undefined
               } w-30 pointer`}
-              onClick={() => handleActions(index)}
+              onClick={() => handleActions(key)}
               key={index}
             >
               <p className="f5 fw5 mt2">{key.replace("would like to", "")}</p>

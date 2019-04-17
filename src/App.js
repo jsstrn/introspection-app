@@ -4,8 +4,8 @@ import NavBar from "./components/NavBar/NavBar";
 import { BrowserRouter } from "react-router-dom";
 import Alert from "react-s-alert";
 import { introspectionData } from "../src/services/serveIntrospections";
+import IntroDataContext from "./IntroDataContext";
 
-export const IntroDataContext = React.createContext({});
 class App extends Component {
   constructor(props) {
     super(props);

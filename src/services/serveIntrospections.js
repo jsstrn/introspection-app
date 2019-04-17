@@ -201,11 +201,11 @@ const getBrickElement = (data, office, categoryName, action) => {
   return persons;
 };
 
-const getBrickTable = (office, categoryName, actionList) => {
+const getBrickTable = (data, office, categoryName, actionList) => {
   const result = {};
   actionList.forEach(elem => (result[elem] = []));
   actionList.forEach(
-    elem => (result[elem] = getBrickElement(office, categoryName, elem))
+    elem => (result[elem] = getBrickElement(data, office, categoryName, elem))
   );
   return result;
 };
