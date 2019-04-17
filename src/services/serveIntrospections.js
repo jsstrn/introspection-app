@@ -168,12 +168,12 @@ const data = [
   }
 ];
 
-const findOne = tarName => {
+const findOne = (data, tarName) => {
   const oneDatum = data.find(a => a.name === tarName);
   return [oneDatum];
 };
 
-const findAllExcept = tarName => {
+const findAllExcept = (data, tarName) => {
   const oneDatum = data.find(a => a.name === tarName);
   const index = data.indexOf(oneDatum);
   const copy = data.slice();
@@ -181,13 +181,13 @@ const findAllExcept = tarName => {
   return copy;
 };
 
-const getCategoriesByOffice = office => {
+const getCategoriesByOffice = (data, office) => {
   const tarOfficeEmployees = data.filter(a => a.office === office);
   const categories = tarOfficeEmployees[0].categories.map(cat => cat.category);
   return categories;
 };
 
-const getBrickElement = (office, categoryName, action) => {
+const getBrickElement = (data, office, categoryName, action) => {
   const tarOffice = data.filter(elem => elem.office === office);
   const persons = [];
   tarOffice.forEach(person => {
@@ -205,12 +205,7 @@ const getBrickElement = (office, categoryName, action) => {
   return persons;
 };
 
-const getBrickTable = (office, categoryName) => {
-  const actionList = [
-    "would like to explore",
-    "would like to deepen",
-    "would like to share"
-  ];
+const getBrickTable = (office, categoryName, actionList) => {
   const result = {};
   actionList.forEach(elem => (result[elem] = []));
   actionList.forEach(
@@ -226,4 +221,3 @@ export {
   getBrickElement,
   getBrickTable
 };
-export default data;
