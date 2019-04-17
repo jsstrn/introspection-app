@@ -25,16 +25,20 @@ class BrickContainer extends Component {
   };
 
   render() {
-    const { tablenumber, data } = this.state;
-
+    const { tablenumber, data, brickObject } = this.state;
+    const tableTitle = ["Explore", "Deepen", "Share"];
     return (
       <React.Fragment>
         <Brick
+          brickObject={brickObject}
           count={this.state.data.map(a => a.length)}
           handleActions={this.handleActionSelector}
           tablenumber={tablenumber}
         />
-        <BrickTable names={data[tablenumber]} />
+        <BrickTable
+          names={data[tablenumber]}
+          tableTitle={tableTitle[tablenumber]}
+        />
       </React.Fragment>
     );
   }

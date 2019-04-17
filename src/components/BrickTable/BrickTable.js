@@ -1,13 +1,13 @@
 import React from "react";
 import { Container } from "reactstrap";
 
-const BrickTable = ({ names }) => {
+const BrickTable = ({ names, tableTitle }) => {
   const length = names.length;
   const third = Math.ceil(length / 3);
 
   return (
     <Container>
-      <p className="gray fw7">Explore</p>
+      <p className="gray fw7">{tableTitle}</p>
       <div className="flex tc gray justify-around">
         <div className="w-third">
           {names.slice(0, third).map((a, index) => (
