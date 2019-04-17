@@ -3,7 +3,7 @@ import "react-testing-library/cleanup-after-each";
 import React from "react";
 import { render } from "react-testing-library";
 import Wall from "./Wall";
-import { IntroDataContext } from "./../../App";
+import IntroDataContext from "../../IntroDataContext";
 import {
   getCategoriesByOffice,
   data

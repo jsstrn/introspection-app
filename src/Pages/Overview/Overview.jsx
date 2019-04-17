@@ -4,7 +4,7 @@ import HPJumbotron from "../../components/HPJumbotron/HPJumbotron";
 import FullChart from "./../../Radar/FullChart";
 import Wall from "../../components/Wall/Wall";
 import Error from "../../components/Error/Error";
-import { IntroDataContext } from "../../App";
+import IntroDataContext from "../../IntroDataContext";
 import Loading from "./../../components/Loading/Loading";
 
 class Overview extends Component {
@@ -22,7 +22,6 @@ class Overview extends Component {
       return <Error />;
     }
   }
-
   render() {
     return (
       <IntroDataContext.Consumer>

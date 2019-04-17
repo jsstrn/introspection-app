@@ -4,7 +4,7 @@ import {
   getBrickElement,
   getCategoriesByOffice
 } from "../../services/serveIntrospections";
-import { IntroDataContext } from "./../../App";
+import IntroDataContext from "../../IntroDataContext";
 export default class Wall extends Component {
   render() {
     const { office } = this.props;
@@ -22,14 +22,16 @@ export default class Wall extends Component {
                 outline
                 color="success"
                 size="lg"
-                active>
+                active
+              >
                 2018
               </Button>
               <Button
                 style={{ marginLeft: "1em" }}
                 outline
                 color="success"
-                size="lg">
+                size="lg"
+              >
                 2019
               </Button>
             </div>
