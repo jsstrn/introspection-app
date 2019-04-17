@@ -1,4 +1,3 @@
-import _ from "lodash";
 import axios from "axios";
 
 const introURL =
@@ -220,37 +219,11 @@ const getBrickTable = (office, categoryName) => {
   return result;
 };
 
-//if action is served by BE, will need to update
-const getCategoryBrick = (categoryName, office) => {
-  const brick = {
-    name: categoryName,
-    action: {
-      "would like to explore": 0,
-      "would like to deepen": 0,
-      "would like to share": 0
-    }
-  };
-  let tarEmployeeData = data
-    .filter(a => a.office === office)
-    .map(empl => empl.categories);
-
-  tarEmployeeData = _.flatten(tarEmployeeData).filter(
-    elem => elem.category === categoryName
-  );
-
-  tarEmployeeData.map(empl => {
-    return empl.action.map(action => {
-      return brick.action[action]++;
-    });
-  });
-  return brick.action;
-};
-
 export {
   findOne,
   findAllExcept,
   getCategoriesByOffice,
-  getCategoryBrick,
+  getBrickElement,
   getBrickTable
 };
 export default data;

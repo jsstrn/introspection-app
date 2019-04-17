@@ -1,11 +1,17 @@
 import React, { Component } from "react";
 import { Table, Container, Button } from "reactstrap";
-import { getCategoryBrick } from "../../services/serveIntrospections";
+import { getBrickElement } from "../../services/serveIntrospections";
 import { IntroDataContext } from "./../../App";
 export default class Wall extends Component {
   state = {
     office: "Singapore"
   };
+
+  actions = [
+    "would like to explore",
+    "would like to deepen",
+    "would like to share"
+  ];
 
   render() {
     const { office } = this.state;
@@ -14,6 +20,7 @@ export default class Wall extends Component {
       <IntroDataContext.Consumer>
         {value => (
           <Container className="mx-auto mt-5 mb6">
+            {console.log(value)}
             <h1 className="text-info text-center font-weight-bolder mb-5">
               {`${office}'s Action Plan`}
             </h1>
@@ -49,13 +56,11 @@ export default class Wall extends Component {
                     <th scope="row">
                       <i className="fas fa-user-circle" /> {item}
                     </th>
-                    {Object.entries(getCategoryBrick(item, office)).map(
-                      (num, index) => (
-                        <td data-testid={`${item}-${num[0]}`} key={index}>
-                          {num[1]}
-                        </td>
-                      )
-                    )}
+                    {this.actions.map((action, index) => (
+                      <td data-testid={`${item}-${action}`} key={index}>
+                        {getBrickElement(office, item, action).length}
+                      </td>
+                    ))}
                   </tr>
                 ))}
               </tbody>
