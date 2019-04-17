@@ -10,11 +10,8 @@ class App extends Component {
   constructor(props) {
     super(props);
     this.state = {
-      data: [],
-      actions: [],
-      error: null,
-      isLoading: false,
       value: {
+        office: "",
         data: [],
         actions: [],
         error: null,
@@ -29,6 +26,7 @@ class App extends Component {
       const actions = await introspectionData("actions");
       this.setState({
         value: {
+          office: "Singapore",
           data,
           actions,
           isLoading: false

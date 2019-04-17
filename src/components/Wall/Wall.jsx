@@ -7,14 +7,12 @@ import {
 import IntroDataContext from "../../IntroDataContext";
 export default class Wall extends Component {
   render() {
-    const { office } = this.props;
-
     return (
       <IntroDataContext.Consumer>
         {value => (
           <Container className="mx-auto mt-5 mb6">
             <h1 className="text-info text-center font-weight-bolder mb-5">
-              {`${office}'s Action Plan`}
+              {`${value.office}'s Action Plan`}
             </h1>
             <div className="text-center mb-5">
               <Button
@@ -39,13 +37,14 @@ export default class Wall extends Component {
               <thead>
                 <tr>
                   <th />
-                  <th>Explore</th>
-                  <th>Deepen</th>
-                  <th>Share</th>
+                  {value.actions.map((action, index) => (
+                    <th key={index}>{action}</th>
+                  ))}
                 </tr>
               </thead>
               <tbody>
-                {getCategoriesByOffice(value.data, office).map(
+                {console.log(value.office)}
+                {getCategoriesByOffice(value.data, value.office).map(
                   (item, index) => (
                     <tr key={index}>
                       <th scope="row">
@@ -54,8 +53,12 @@ export default class Wall extends Component {
                       {value.actions.map((action, index) => (
                         <td data-testid={`${item}-${action}`} key={index}>
                           {
-                            getBrickElement(value.data, office, item, action)
-                              .length
+                            getBrickElement(
+                              value.data,
+                              value.office,
+                              item,
+                              action
+                            ).length
                           }
                         </td>
                       ))}

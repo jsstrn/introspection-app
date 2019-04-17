@@ -8,16 +8,12 @@ import IntroDataContext from "../../IntroDataContext";
 import Loading from "./../../components/Loading/Loading";
 
 class Overview extends Component {
-  state = {
-    office: "Singapore"
-  };
-
   renderWall(error, isLoading) {
     if (isLoading) {
       return <Loading />;
     } else {
       if (!error) {
-        return <Wall office={this.state.office} />;
+        return <Wall />;
       }
       return <Error />;
     }

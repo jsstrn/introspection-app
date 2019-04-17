@@ -5,8 +5,9 @@ import SliceDetails from "../../components/SliceDetails/SliceDetails";
 import BrickContainer from "../../components/BrickContainer/BrickContainer";
 
 function SlicePage(props) {
-  const categoryName = "Religious Minorities";
-
+  const categoryName = props.match.params.category
+    ? props.match.params.category
+    : "Equitable Tech";
   return (
     <>
       <HPJumbotron />
@@ -17,7 +18,7 @@ function SlicePage(props) {
         <Row>
           <Col xs="12" md="6" />
           <Col xs="12" md="6">
-            <BrickContainer />
+            <BrickContainer category={categoryName} />
           </Col>
         </Row>
       </Container>

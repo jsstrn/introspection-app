@@ -23,15 +23,11 @@ class BrickContainer extends Component {
   }
   render() {
     console.log(this.context);
-    const { data, actions } = this.context;
+    const { office, data, actions } = this.context;
+    const { category } = this.props;
     let { tableKey } = this.state;
 
-    const brickObject = getBrickTable(
-      data,
-      "Singapore",
-      "Diversity and Inclusion",
-      actions
-    );
+    const brickObject = getBrickTable(data, office, category, actions);
     if (!tableKey) {
       console.log(tableKey);
       console.log(brickObject);
