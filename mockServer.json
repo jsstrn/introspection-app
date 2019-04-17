@@ -1,0 +1,162 @@
+{
+  "actions": [
+    "Would like to explore",
+    "Would like to deepen",
+    "Would like to share"
+  ],
+  "introspection": [
+    {
+      "_id": "5cad90e0d99ba76cbc96faeb",
+      "timeStamp": "2019-03-06T02:24:00.000Z",
+      "name": "Aaron Bo",
+      "email": "a@thoughtworks.com",
+      "office": "Thailand",
+      "categories": [
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fada"
+        },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad9" },
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad8"
+        },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad9" },
+        {
+          "action": ["Would like to deepen", "Would like to share"],
+          "level": "5cad74cfd99ba76cbc96fada"
+        },
+        {
+          "action": ["Would like to explore"],
+          "level": "5cad74cfd99ba76cbc96fad8"
+        },
+        {
+          "action": ["Would like to deepen", "Would like to share"],
+          "level": "5cad74cfd99ba76cbc96fada"
+        }
+      ],
+      "__v": 0
+    },
+    {
+      "_id": "5cad90e0d99ba76cbc96faf4",
+      "timeStamp": "2019-03-22T04:01:43.000Z",
+      "name": "Bernard Chan",
+      "email": "b@thoughtworks.com",
+      "office": "Singapore",
+      "categories": [
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad9" },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" },
+        {
+          "action": ["Would like to share"],
+          "level": "5cad74cfd99ba76cbc96fada"
+        },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad9" },
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad8"
+        },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" }
+      ],
+      "__v": 0
+    },
+    {
+      "_id": "5cad90e0d99ba76cbc96fafd",
+      "timeStamp": "2019-03-22T05:15:39.000Z",
+      "name": "Camelia Donald",
+      "email": "c@thoughtworks.com",
+      "office": "Thailand",
+      "categories": [
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad9"
+        },
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad8"
+        },
+        {
+          "action": ["Would like to share"],
+          "level": "5cad74cfd99ba76cbc96fad9"
+        },
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad8"
+        },
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad9"
+        },
+        {
+          "action": ["Would like to deepen", "Would like to share"],
+          "level": "5cad74cfd99ba76cbc96fada"
+        },
+        {
+          "action": ["Would like to share"],
+          "level": "5cad74cfd99ba76cbc96fad9"
+        },
+        {
+          "action": ["Would like to share"],
+          "level": "5cad74cfd99ba76cbc96fada"
+        }
+      ],
+      "__v": 0
+    },
+    {
+      "_id": "5cad90e0d99ba76cbc96fb06",
+      "timeStamp": "2019-03-22T05:54:48.000Z",
+      "name": "Daniel Ee",
+      "email": "d@thoughtworks.com",
+      "office": "Singapore",
+      "categories": [
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad9"
+        },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad9" },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad9" },
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad8"
+        },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" },
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad8"
+        },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" }
+      ],
+      "__v": 0
+    },
+    {
+      "_id": "5cad90e0d99ba76cbc96fb0f",
+      "timeStamp": "2019-03-22T07:17:41.000Z",
+      "name": "Emma Fan",
+      "email": "e@thoughtworks.com",
+      "office": "Singapore",
+      "categories": [
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" },
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad9"
+        },
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad8"
+        },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" },
+        {
+          "action": ["Would like to deepen"],
+          "level": "5cad74cfd99ba76cbc96fad9"
+        },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad8" },
+        { "action": [], "level": "5cad74cfd99ba76cbc96fad7" }
+      ],
+      "__v": 0
+    }
+  ]
+}
