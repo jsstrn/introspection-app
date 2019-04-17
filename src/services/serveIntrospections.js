@@ -6,12 +6,8 @@ const introURL =
     : `https://${process.env.BACKEND_URL}.herokuapp.com`;
 
 export const introspectionData = async params => {
-  try {
-    const response = await axios.get(`${introURL}/${params}`);
-    return response.data;
-  } catch (err) {
-    return { error: err };
-  }
+  const response = await axios.get(`${introURL}/${params}`);
+  return response.data;
 };
 
 const category = [
@@ -32,34 +28,34 @@ const data = [
     email: "jd@thoughtworks.com",
     office: "Singapore",
     categories: [
-      { category: category[0].name, level: 4, action: ["would like to share"] },
+      { category: category[0].name, level: 4, action: ["Would like to share"] },
       {
         category: category[1].name,
         level: 3,
-        action: ["would like to explore", "would like to share"]
+        action: ["Would like to explore", "Would like to share"]
       },
       {
         category: category[2].name,
         level: 2,
-        action: ["would like to deepen"]
+        action: ["Would like to deepen"]
       },
       {
         category: category[3].name,
         level: 2,
-        action: ["would like to deepen"]
+        action: ["Would like to deepen"]
       },
       {
         category: category[4].name,
         level: 1,
-        action: ["would like to deepen"]
+        action: ["Would like to deepen"]
       },
       {
         category: category[5].name,
         level: 2,
-        action: ["would like to deepen"]
+        action: ["Would like to deepen"]
       },
-      { category: category[6].name, level: 4, action: ["would like to share"] },
-      { category: category[7].name, level: 2, action: ["would like to deepen"] }
+      { category: category[6].name, level: 4, action: ["Would like to share"] },
+      { category: category[7].name, level: 2, action: ["Would like to deepen"] }
     ]
   },
   {
@@ -71,27 +67,27 @@ const data = [
       {
         category: category[0].name,
         level: 1,
-        action: ["would like to deepen"]
+        action: ["Would like to deepen"]
       },
-      { category: category[1].name, level: 4, action: ["would like to share"] },
-      { category: category[2].name, level: 4, action: ["would like to share"] },
-      { category: category[3].name, level: 4, action: ["would like to share"] },
+      { category: category[1].name, level: 4, action: ["Would like to share"] },
+      { category: category[2].name, level: 4, action: ["Would like to share"] },
+      { category: category[3].name, level: 4, action: ["Would like to share"] },
       {
         category: category[4].name,
         level: 1,
-        action: ["would like to deepen"]
+        action: ["Would like to deepen"]
       },
       {
         category: category[5].name,
         level: 4,
-        action: ["would like to share", "would like to deepen"]
+        action: ["Would like to share", "Would like to deepen"]
       },
       {
         category: category[6].name,
         level: 2,
-        action: ["would like to explore"]
+        action: ["Would like to explore"]
       },
-      { category: category[7].name, level: 3, action: ["would like to deepen"] }
+      { category: category[7].name, level: 3, action: ["Would like to deepen"] }
     ]
   },
   {
@@ -103,31 +99,31 @@ const data = [
       {
         category: category[0].name,
         level: 1,
-        action: ["would like to explore"]
+        action: ["Would like to explore"]
       },
       {
         category: category[1].name,
         level: 2,
-        action: ["would like to explore"]
+        action: ["Would like to explore"]
       },
-      { category: category[2].name, level: 3, action: ["would like to share"] },
-      { category: category[3].name, level: 4, action: ["would like to share"] },
+      { category: category[2].name, level: 3, action: ["Would like to share"] },
+      { category: category[3].name, level: 4, action: ["Would like to share"] },
       {
         category: category[4].name,
         level: 2,
-        action: ["would like to deepen", "would like to explore"]
+        action: ["Would like to deepen", "Would like to explore"]
       },
       {
         category: category[5].name,
         level: 3,
-        action: ["would like to explore"]
+        action: ["Would like to explore"]
       },
       {
         category: category[6].name,
         level: 3,
-        action: ["would like to explore"]
+        action: ["Would like to explore"]
       },
-      { category: category[7].name, level: 4, action: ["would like to share"] }
+      { category: category[7].name, level: 4, action: ["Would like to share"] }
     ]
   },
   {
@@ -136,33 +132,33 @@ const data = [
     email: "js@thoughtworks.com",
     office: "Singapore",
     categories: [
-      { category: category[0].name, level: 4, action: ["would like to share"] },
+      { category: category[0].name, level: 4, action: ["Would like to share"] },
       {
         category: category[1].name,
         level: 1,
-        action: ["would like to explore"]
+        action: ["Would like to explore"]
       },
       {
         category: category[2].name,
         level: 2,
-        action: ["would like to deepen"]
+        action: ["Would like to deepen"]
       },
       {
         category: category[3].name,
         level: 3,
-        action: ["would like to explore", "would like to deepen"]
+        action: ["Would like to explore", "Would like to deepen"]
       },
-      { category: category[4].name, level: 4, action: ["would like to share"] },
+      { category: category[4].name, level: 4, action: ["Would like to share"] },
       {
         category: category[5].name,
         level: 1,
-        action: ["would like to explore"]
+        action: ["Would like to explore"]
       },
-      { category: category[6].name, level: 4, action: ["would like to share"] },
+      { category: category[6].name, level: 4, action: ["Would like to share"] },
       {
         category: category[7].name,
         level: 1,
-        action: ["would like to explore"]
+        action: ["Would like to explore"]
       }
     ]
   }
@@ -219,5 +215,6 @@ export {
   findAllExcept,
   getCategoriesByOffice,
   getBrickElement,
-  getBrickTable
+  getBrickTable,
+  data
 };

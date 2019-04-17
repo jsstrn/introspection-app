@@ -9,13 +9,39 @@ export const IntroDataContext = React.createContext({});
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [], actions: [] };
+    this.state = {
+      data: [],
+      actions: [],
+      error: null,
+      isLoading: false,
+      value: {
+        data: [],
+        actions: [],
+        error: null,
+        isLoading: true
+      }
+    };
   }
 
   async componentDidMount() {
-    const data = await introspectionData("introspection");
-    const actions = await introspectionData("actions");
-    this.setState({ data, actions });
+    try {
+      const data = await introspectionData("introspection");
+      const actions = await introspectionData("actions");
+      this.setState({
+        value: {
+          data,
+          actions,
+          isLoading: false
+        }
+      });
+    } catch (error) {
+      this.setState({
+        value: {
+          error,
+          isLoading: false
+        }
+      });
+    }
   }
 
   render() {
@@ -23,7 +49,7 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <NavBar />
-          <IntroDataContext.Provider value={this.state}>
+          <IntroDataContext.Provider value={this.state.value}>
             <Routes />
           </IntroDataContext.Provider>
           <Alert />
