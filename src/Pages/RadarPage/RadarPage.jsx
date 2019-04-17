@@ -5,7 +5,7 @@ import FullChart from "../../Radar/FullChart";
 function RadarPage() {
   return (
     <React.Fragment>
-      <FullChart />
+      {process.env.REACT_APP_FEATURE_TOGGLE_PIZZA === "true" && <FullChart />}
     </React.Fragment>
   );
 }

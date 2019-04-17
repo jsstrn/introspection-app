@@ -50,19 +50,17 @@ export class AdminPage extends Component {
     });
   };
 
-  render() {
+  renderCsvUploader() {
     return (
-      <Container
-        className="mx-auto text-center mt-5"
-        style={{ width: "100vw" }}>
-        <h1 className="text-info font-weight-bolder">Admin Page</h1>
+      <React.Fragment>
         <h3>🗄 Upload CSV File</h3>
         <form
           data-testid="form"
           action="upload"
           method="post"
           encType="multipart/form-data"
-          onSubmit={this.handleSubmit}>
+          onSubmit={this.handleSubmit}
+        >
           <input
             type="file"
             ref={input => {
@@ -77,6 +75,19 @@ export class AdminPage extends Component {
             Send
           </button>
         </form>
+      </React.Fragment>
+    );
+  }
+
+  render() {
+    return (
+      <Container
+        className="mx-auto text-center mt-5"
+        style={{ width: "100vw" }}
+      >
+        <h1 className="text-info font-weight-bolder">Admin Page</h1>
+        {process.env.REACT_APP_FEATURE_TOGGLE_UPLOADER === "true" &&
+          this.renderCsvUploader()}
       </Container>
     );
   }
