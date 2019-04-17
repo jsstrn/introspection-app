@@ -79,7 +79,7 @@ jobs:
           name: Smoke test for auto environment
           command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
-  end-to-end-test:
+  end-to-end-test-auto:
     docker:
       - image: cypress/browsers:chrome69
 
@@ -124,6 +124,24 @@ jobs:
           name: Smoke test for QA environment
           command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
+  end-to-end-test-qa:
+    docker:
+      - image: cypress/browsers:chrome69
+
+    environment:
+      TERM: xterm
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: npm install cypress
+
+      - run:
+          name: Run end to end tests
+          command: $(npm bin)/cypress run --browser chrome --config baseUrl=https://qa-introspection-app.netlify.com
+
   deploy-staging:
     docker:
       - image: circleci/node:10.15.3
@@ -162,23 +180,26 @@ workflows:
       - smoke-test-auto:
           requires:
             - deploy-auto
-      - end-to-end-test:
+      - end-to-end-test-auto:
           requires:
             - smoke-test-auto
       - hold-qa:
           type: approval
           requires:
-            - end-to-end-test
+            - end-to-end-test-auto
       - deploy-qa:
           requires:
             - hold-qa
       - smoke-test-qa:
           requires:
             - deploy-qa
+      - end-to-end-test-qa:
+          requires:
+            - smoke-test-qa
       - hold-staging:
           type: approval
           requires:
-            - deploy-qa
+            - end-to-end-test-qa
       - deploy-staging:
           requires:
             - hold-staging
