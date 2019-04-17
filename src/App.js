@@ -9,11 +9,13 @@ export const IntroDataContext = React.createContext({});
 class App extends Component {
   constructor(props) {
     super(props);
-    this.state = { data: [] };
+    this.state = { data: [], actions: [] };
   }
+
   async componentDidMount() {
-    const data = await introspectionData();
-    this.setState({ data });
+    const data = await introspectionData("introspection");
+    const actions = await introspectionData("actions");
+    this.setState({ data, actions });
   }
 
   render() {
@@ -21,8 +23,7 @@ class App extends Component {
       <BrowserRouter>
         <React.Fragment>
           <NavBar />
-          <IntroDataContext.Provider value={this.state.data}>
-            {" "}
+          <IntroDataContext.Provider value={this.state}>
             <Routes />
           </IntroDataContext.Provider>
           <Alert />

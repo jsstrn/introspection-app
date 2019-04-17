@@ -5,9 +5,9 @@ const introURL =
     ? "http://localhost:7890"
     : `https://${process.env.BACKEND_URL}.herokuapp.com`;
 
-export const introspectionData = async () => {
+export const introspectionData = async params => {
   try {
-    const response = await axios.get(`${introURL}/introspection`);
+    const response = await axios.get(`${introURL}/${params}`);
     return response.data;
   } catch (err) {
     return { error: err };
