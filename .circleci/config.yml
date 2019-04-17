@@ -28,14 +28,6 @@ jobs:
             - ~/.cache
 
       - run:
-          name: Run unit tests
-          command: npm run test:ci
-
-      - run:
-          name: Run integration tests
-          command: npm run cy:ci
-
-      - run:
           name: Create build
           command: npm run build
 
@@ -51,6 +43,40 @@ jobs:
           root: /tmp
           paths:
             - build/*
+
+  tests:
+    docker:
+      - image: cypress/base:10
+
+    environment:
+      TERM: xterm
+
+    steps:
+      - checkout
+
+      - restore_cache:
+          keys:
+            - v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+            - v1-deps-{{ .Branch }}
+            - v1-deps
+
+      - run:
+          name: Install dependencies
+          command: npm ci
+
+      - save_cache:
+          key: v1-deps-{{ .Branch }}-{{ checksum "package.json" }}
+          paths:
+            - ~/.npm
+            - ~/.cache
+
+      - run:
+          name: Run unit tests
+          command: npm run test:ci
+
+      - run:
+          name: Run integration tests
+          command: npm run cy:ci
 
   deploy-auto:
     docker:
@@ -191,6 +217,7 @@ workflows:
   build-and-deploy:
     jobs:
       - build
+      - tests
       - deploy-auto:
           requires:
             - build
