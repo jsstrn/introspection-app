@@ -10,6 +10,7 @@ import {
 } from "../../services/serveIntrospections";
 
 const value = {
+  office: "Singapore",
   data,
   actions: [
     "Would like to explore",
