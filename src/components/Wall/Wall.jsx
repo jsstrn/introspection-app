@@ -20,16 +20,14 @@ export default class Wall extends Component {
                 outline
                 color="success"
                 size="lg"
-                active
-              >
+                active>
                 2018
               </Button>
               <Button
                 style={{ marginLeft: "1em" }}
                 outline
                 color="success"
-                size="lg"
-              >
+                size="lg">
                 2019
               </Button>
             </div>
@@ -43,7 +41,6 @@ export default class Wall extends Component {
                 </tr>
               </thead>
               <tbody>
-                {console.log(value.office)}
                 {getCategoriesByOffice(value.data, value.office).map(
                   (item, index) => (
                     <tr key={index}>
