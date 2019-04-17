@@ -1,9 +1,6 @@
 import axios from "axios";
 
-const introURL =
-  process.env.NODE_ENV !== "production"
-    ? "http://localhost:7890"
-    : `https://${process.env.BACKEND_URL}.herokuapp.com`;
+const introURL = process.env.REACT_APP_BACKEND_URL;
 
 export const introspectionData = async params => {
   const response = await axios.get(`${introURL}/${params}`);
