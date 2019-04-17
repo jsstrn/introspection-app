@@ -169,6 +169,23 @@ jobs:
           name: Smoke test for staging environment
           command: curl --fail https://$NETLIFY_APP_NAME.netlify.com
 
+  end-to-end-test-staging:
+    docker:
+      - image: cypress/browsers:chrome69
+
+    environment:
+      TERM: xterm
+
+    steps:
+      - checkout
+
+      - run:
+          name: Install dependencies
+          command: npm install cypress
+
+      - run:
+          name: Run end to end tests
+          command: $(npm bin)/cypress run --browser chrome --config baseUrl=https://staging-introspection-app.netlify.com
 workflows:
   version: 2
   build-and-deploy:
@@ -206,3 +223,6 @@ workflows:
       - smoke-test-staging:
           requires:
             - deploy-staging
+      - end-to-end-test-staging:
+          requires:
+            - smoke-test-staging
