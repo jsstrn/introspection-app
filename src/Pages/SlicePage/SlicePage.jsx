@@ -3,7 +3,6 @@ import { Container, Row, Col } from "reactstrap";
 import HPJumbotron from "../../components/HPJumbotron/HPJumbotron";
 import SliceDetails from "../../components/SliceDetails/SliceDetails";
 import BrickContainer from "../../components/BrickContainer/BrickContainer";
-import IntroDataContext from "../../IntroDataContext";
 
 function SlicePage(props) {
   const categoryName = "Religious Minorities";
