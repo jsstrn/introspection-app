@@ -37,7 +37,6 @@ class BrickContainer extends Component {
       console.log(brickObject);
       tableKey = Object.keys(brickObject)[0];
     }
-    const tableTitle = ["Explore", "Deepen", "Share"];
     console.log(tableKey);
     return (
       <React.Fragment>
