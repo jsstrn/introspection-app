@@ -7,7 +7,7 @@ class FullChart extends Component {
     return (
       <Container className="mx-auto text-center mt-5">
         <h1 className="radar-title text-info font-weight-bolder">
-          {this.props.office}'s Introspection Radar
+          Singapore's Introspection Radar
         </h1>
         <Scatter
           sector={[0, 360]}
