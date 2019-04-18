@@ -1,7 +1,11 @@
 import axios from "axios";
 
 const hosts = {
-  "localhost:3000": "localhost:7890"
+  "localhost:3000": "localhost:7890",
+  "auto-introspection-app.netlify.com": "auto-introspection-api.herokuapp.com",
+  "qa-introspection-app.netlify.com": "test-introspection-api.herokuapp.com",
+  "staging-introspection-app.netlify.com":
+    "staging-introspection-api.herokuapp.com"
 };
 
 const isValidHost = host => Object.keys(hosts).indexOf(host) !== -1;
