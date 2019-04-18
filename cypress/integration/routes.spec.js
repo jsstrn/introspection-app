@@ -2,6 +2,7 @@
 
 describe("Routes", () => {
   it("goes to home page", () => {
+    cy.wait(10000);
     cy.visit("/");
 
     cy.get("h4")
@@ -18,14 +19,14 @@ describe("Routes", () => {
     // .attr("data-testid", "Equitable Tech-would like to deepen")
     // .should("include", 3);
   });
-  
+
   it("goes to radar page", () => {
     cy.visit("/");
-    
+
     cy.get("h4")
     .contains("Introspection Radar")
     .click();
-    
+
     cy.url().should("include", "/radar");
     // cy.get("h1.radar-title").should("contain", "Singapore Introspection Radar");
   });
