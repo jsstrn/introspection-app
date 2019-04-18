@@ -11,7 +11,7 @@ export default class Wall extends Component {
       <IntroDataContext.Consumer>
         {value => (
           <Container className="mx-auto mt-5 mb6">
-            <h1 className="text-info text-center font-weight-bolder mb-5">
+            <h1 className="wall-title text-info text-center font-weight-bolder mb-5">
               {`${value.office}'s Action Plan`}
             </h1>
             <div className="text-center mb-5">

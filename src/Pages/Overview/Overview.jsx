@@ -26,7 +26,7 @@ class Overview extends Component {
             <HPJumbotron />
             <Container className="mx-auto" style={{ width: "100vw" }}>
               {process.env.REACT_APP_FEATURE_TOGGLE_PIZZA === "true" && (
-                <FullChart />
+                <FullChart office={value.office} />
               )}
             </Container>
             <hr />

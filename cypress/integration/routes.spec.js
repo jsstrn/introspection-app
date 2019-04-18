@@ -10,14 +10,13 @@ describe("Routes", () => {
       .click();
 
     cy.url().should("include", "/home");
-    // cy.get("h1.radar-title").should("contain", "Singapore Introspection Radar");
-    // cy.get("h1.wall-title").should("contain", "Singapore Action Plan");
-    // cy.get("td")
-    // .attr("data-testid", "Diversity and Inclusion-would like to share")
-    // .should("include", 2);
-    // cy.get("td")
-    // .attr("data-testid", "Equitable Tech-would like to deepen")
-    // .should("include", 3);
+
+    cy.get("h1.radar-title").should(
+      "contain",
+      "Singapore's Introspection Radar"
+    );
+    cy.get("h1.wall-title").should("contain", "Singapore's Action Plan");
+    cy.get("tr td").should("have.attr", "data-testid");
   });
 
   it("goes to radar page", () => {
@@ -28,7 +27,6 @@ describe("Routes", () => {
     .click();
 
     cy.url().should("include", "/radar");
-    // cy.get("h1.radar-title").should("contain", "Singapore Introspection Radar");
   });
 
   it("goes to action plan page", () => {
@@ -57,7 +55,7 @@ describe("Routes", () => {
       .contains("Detailed")
       .click();
     cy.url().should("include", "/slice");
-  cy.get("h1").should("contain", "Equitable Tech");
+    cy.get("h1").should("contain", "Equitable Tech");
   });
 
   it("goes to profile page", () => {

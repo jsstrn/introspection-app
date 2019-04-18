@@ -3,15 +3,11 @@ import { Container } from "reactstrap";
 import Scatter from "./Scatter";
 
 class FullChart extends Component {
-  constructor(props) {
-    super(props);
-    this.state = {};
-  }
   render() {
     return (
       <Container className="mx-auto text-center mt-5">
-        <h1 className="text-info font-weight-bolder">
-          Singapore's Introspection Radar
+        <h1 className="radar-title text-info font-weight-bolder">
+          {this.props.office}'s Introspection Radar
         </h1>
         <Scatter
           sector={[0, 360]}
