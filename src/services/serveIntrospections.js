@@ -1,9 +1,19 @@
 import axios from "axios";
 
-const introURL = process.env.REACT_APP_BACKEND_URL;
+const hosts = {
+  "localhost:3000": "localhost:7890"
+};
+
+const isValidHost = host => Object.keys(hosts).indexOf(host) !== -1;
+
+let url;
+if (isValidHost(window.location.host)) {
+  const protocol = window.location.protocol;
+  url = `${protocol}//${hosts[window.location.host]}`;
+}
 
 export const introspectionData = async params => {
-  const response = await axios.get(`${introURL}/${params}`);
+  const response = await axios.get(`${url}/${params}`);
   return response.data;
 };
 
