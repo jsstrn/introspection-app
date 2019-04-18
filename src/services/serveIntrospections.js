@@ -1,20 +1,11 @@
 import axios from "axios";
+import { hosts, isValidHost } from "./hosts";
 
-const hosts = {
-  "localhost:3000": "localhost:7890",
-  "auto-introspection-app.netlify.com": "auto-introspection-api.herokuapp.com",
-  "qa-introspection-app.netlify.com": "test-introspection-api.herokuapp.com",
-  "staging-introspection-app.netlify.com":
-    "staging-introspection-api.herokuapp.com"
-};
-
-const isValidHost = host => Object.keys(hosts).indexOf(host) !== -1;
-
-let url;
-if (isValidHost(window.location.host)) {
-  const protocol = window.location.protocol;
-  url = `${protocol}//${hosts[window.location.host]}`;
-}
+const host = window.location.host;
+const protocol = window.location.protocol;
+const url = isValidHost(host)
+  ? `${protocol}//${hosts[window.location.host]}`
+  : "";
 
 export const introspectionData = async params => {
   const response = await axios.get(`${url}/${params}`);
