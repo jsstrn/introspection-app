@@ -222,6 +222,7 @@ workflows:
       - deploy-auto:
           requires:
             - build
+            - tests
       - smoke-test-auto:
           requires:
             - deploy-auto
