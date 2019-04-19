@@ -1,8 +1,19 @@
 /// <reference types="Cypress" />
 
 describe("Routes", () => {
+  before(() => {
+    const wakeServiceUp = url => {
+      cy.request(url).then(res => {
+        if (res.status === 200) return;
+        wakeServiceUp();
+      });
+    };
+
+    wakeServiceUp("https://auto-introspection-api.herokuapp.com");
+  });
+
   it("goes to home page", () => {
-    cy.visit("/", {timeout: 120000});
+    cy.visit("/", { timeout: 120000 });
 
     cy.get("h4")
       .contains("About Introspection")
@@ -22,8 +33,8 @@ describe("Routes", () => {
     cy.visit("/");
 
     cy.get("h4")
-    .contains("Introspection Radar")
-    .click();
+      .contains("Introspection Radar")
+      .click();
 
     cy.url().should("include", "/radar");
   });
