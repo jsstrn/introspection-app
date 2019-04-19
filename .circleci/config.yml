@@ -47,7 +47,7 @@ jobs:
 
   unit-tests:
     docker:
-      - image: circleci/node:10.15.3
+      - image: cypress/base:10
 
     environment:
       TERM: xterm
