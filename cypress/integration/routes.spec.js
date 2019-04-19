@@ -2,8 +2,7 @@
 
 describe("Routes", () => {
   it("goes to home page", () => {
-    cy.wait(10000);
-    cy.visit("/");
+    cy.visit("/", {timeout: 120000});
 
     cy.get("h4")
       .contains("About Introspection")
