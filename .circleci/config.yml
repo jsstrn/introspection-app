@@ -180,21 +180,22 @@ jobs:
 
   end-to-end-test-qa:
     docker:
-      - image: cypress/browsers:chrome69
+      - image: cypress/base:10
 
     environment:
       TERM: xterm
+      FEATURE_TOGGLE_PIZZA: "https://qa-introspection-app.netlify.com"
 
     steps:
       - checkout
 
       - run:
-          name: Install dependencies
+          name: Install Cypress
           command: npm install cypress
 
       - run:
           name: Run end to end tests
-          command: $(npm bin)/cypress run --browser chrome --config baseUrl=https://qa-introspection-app.netlify.com
+          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false --config baseUrl=$BASE_URL
 
   deploy-staging:
     docker:
@@ -225,10 +226,11 @@ jobs:
 
   end-to-end-test-staging:
     docker:
-      - image: cypress/browsers:chrome69
+      - image: cypress/base:10
 
     environment:
       TERM: xterm
+      FEATURE_TOGGLE_PIZZA: "https://staging-introspection-app.netlify.com"
 
     steps:
       - checkout
@@ -239,7 +241,8 @@ jobs:
 
       - run:
           name: Run end to end tests
-          command: $(npm bin)/cypress run --browser chrome --config baseUrl=https://staging-introspection-app.netlify.com
+          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false --config baseUrl=$BASE_URL
+
 workflows:
   version: 2
   build-and-deploy:
