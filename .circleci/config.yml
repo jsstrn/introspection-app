@@ -108,10 +108,11 @@ jobs:
 
   end-to-end-test-auto:
     docker:
-      - image: cypress/browsers:chrome69
+      - image: cypress/base:10
 
     environment:
       TERM: xterm
+      BASE_URL: "https://auto-introspection-app.netlify.com"
 
     steps:
       - checkout
@@ -122,7 +123,7 @@ jobs:
 
       - run:
           name: Run end to end tests
-          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false --browser chrome --config baseUrl=https://auto-introspection-app.netlify.com
+          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false --config baseUrl=$BASE_URL
 
   deploy-qa:
     docker:
