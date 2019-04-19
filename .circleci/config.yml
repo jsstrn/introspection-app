@@ -118,10 +118,6 @@ jobs:
       - checkout
 
       - run:
-          name: Install dependencies
-          command: npm install cypress
-
-      - run:
           name: Run end to end tests
           command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false --config baseUrl=$BASE_URL
 
