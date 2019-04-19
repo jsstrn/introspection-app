@@ -21,10 +21,13 @@ describe("Routes", () => {
 
     cy.url().should("include", "/home");
 
-    cy.get("h1.radar-title").should(
-      "contain",
-      "Singapore's Introspection Radar"
-    );
+    if (Cypress.env("FEATURE_TOGGLE_PIZZA") === "true") {
+      cy.get("h1.radar-title").should(
+        "contain",
+        "Singapore's Introspection Radar"
+      );
+    }
+
     cy.get("h1.wall-title").should("contain", "Singapore's Action Plan");
     cy.get("tr td").should("have.attr", "data-testid");
   });
