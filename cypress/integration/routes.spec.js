@@ -62,7 +62,7 @@ describe("Routes", () => {
     cy.url().should("include", "/admin");
   });
 
-  it("goes to detailed page", () => {
+  xit("goes to detailed page", () => {
     cy.visit("/");
     cy.get("h4")
       .contains("Detailed")
