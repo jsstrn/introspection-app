@@ -13,7 +13,7 @@ describe("Routes", () => {
   });
 
   it("goes to home page", () => {
-    cy.visit("/", { timeout: 120000 });
+    cy.visit("/");
 
     cy.get("h4")
       .contains("About Introspection")
