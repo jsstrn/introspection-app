@@ -144,8 +144,8 @@ jobs:
       - checkout
 
       - run:
-        name: Install Cypress
-        command: npm install cypress
+          name: Install Cypress
+          command: npm install cypress
 
       - run:
           name: Run end to end tests
