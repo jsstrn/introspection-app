@@ -119,7 +119,7 @@ jobs:
 
       - run:
           name: Run end to end tests
-          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false --config baseUrl=$BASE_URL
+          command: cypress run --env FEATURE_TOGGLE_PIZZA=false --config baseUrl=$BASE_URL
 
   deploy-qa:
     docker:
