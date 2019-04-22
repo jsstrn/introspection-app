@@ -1,7 +1,10 @@
 import React, { Component } from "react";
 import Brick from "../Brick/Brick";
 import BrickTable from "../BrickTable/BrickTable";
-import { getBrickTable } from "../../services/serveIntrospections";
+import {
+  getBrickTable,
+  getLevelTable
+} from "../../services/serveIntrospections";
 import IntroDataContext from "../../IntroDataContext";
 
 class BrickContainer extends Component {
@@ -28,23 +31,28 @@ class BrickContainer extends Component {
 
     const brickObject = getBrickTable(data, office, category, actions);
     if (!tableKey) {
-      console.log(tableKey);
-      console.log(brickObject);
       tableKey = Object.keys(brickObject)[0];
     }
-    console.log(tableKey);
+    const levelArray = getLevelTable(data, office, category, "4. Activated");
+
+    const getPeople = () => {
+      if (this.state.tableKey === "Activated Individuals") {
+        return levelArray;
+      } else {
+        return brickObject[tableKey] ? brickObject[tableKey] : [];
+      }
+    };
+
     return (
       <React.Fragment>
         <Brick
           brickObject={brickObject}
+          levelArray={levelArray}
           count={data.map(a => a.length)}
           handleActions={this.handleActionSelector}
           tableKey={tableKey}
         />
-        <BrickTable
-          names={brickObject[tableKey] ? brickObject[tableKey] : []}
-          tableTitle={tableKey}
-        />
+        <BrickTable people={getPeople()} tableTitle={tableKey} />
       </React.Fragment>
     );
   }
