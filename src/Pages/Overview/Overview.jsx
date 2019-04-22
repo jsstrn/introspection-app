@@ -3,9 +3,7 @@ import { Container } from "reactstrap";
 import HPJumbotron from "../../components/HPJumbotron/HPJumbotron";
 import FullChart from "./../../Radar/FullChart";
 import Wall from "../../components/Wall/Wall";
-import Error from "../../components/Error/Error";
 import IntroDataContext from "../../IntroDataContext";
-import Loading from "./../../components/Loading/Loading";
 import withLoadingAndError from "../../components/withLoadingAndError/withLoadingAndError";
 
 class Overview extends Component {
