@@ -5,7 +5,7 @@ describe("Routes", () => {
     const wakeServiceUp = url => {
       cy.request(url).then(res => {
         if (res.status === 200) return;
-        wakeServiceUp();
+        wakeServiceUp(url);
       });
     };
 
