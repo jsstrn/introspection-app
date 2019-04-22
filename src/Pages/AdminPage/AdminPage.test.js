@@ -17,18 +17,21 @@ describe("Admin Page", () => {
   });
 
   describe("admin page", () => {
-    test("renders choose file button and send button upon page load", () => {
+    test("renders upload CSV File title and dropzone, the root and input nodes with the necessary props", () => {
       const history = createMemoryHistory({ initialEntries: ["/"] });
-      const { getByText, getByTestId } = render(
+      const { container, getByText, getByTestId } = render(
         <Router history={history}>
           <AdminPage />
         </Router>
       );
-      expect(getByText(/send/i)).toBeInTheDocument();
-      expect(getByTestId(/uploader/i)).toHaveAttribute("type", "file");
+      const input = container.querySelector("input");
+      expect(input).toHaveAttribute("accept", ".csv");
+      expect(input).not.toHaveAttribute("multiple");
+      expect(getByText(/Upload CSV File/i)).toBeInTheDocument();
+      expect(getByText(/or drag it here/i)).toBeInTheDocument();
     });
 
-    test("Should render successfully upload if file type is accepted", () => {
+    xtest("Should render successfully upload if file type is accepted", () => {
       fetch.mockResponseOnce(JSON.stringify(`👍 Successfully uploaded file!`));
 
       const { getByTestId, container } = render(<AdminPage />);
