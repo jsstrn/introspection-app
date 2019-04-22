@@ -184,7 +184,7 @@ jobs:
 
     environment:
       TERM: xterm
-      FEATURE_TOGGLE_PIZZA: "https://qa-introspection-app.netlify.com"
+      BASE_URL: "https://qa-introspection-app.netlify.com"
 
     steps:
       - checkout
@@ -230,7 +230,7 @@ jobs:
 
     environment:
       TERM: xterm
-      FEATURE_TOGGLE_PIZZA: "https://staging-introspection-app.netlify.com"
+      BASE_URL: "https://staging-introspection-app.netlify.com"
 
     steps:
       - checkout
