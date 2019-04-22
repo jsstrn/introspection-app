@@ -53,7 +53,6 @@ describe("Routes", () => {
   });
 
   it("goes to admin panel page", () => {
-    cy.visit("/");
     if (Cypress.env("FEATURE_TOGGLE_NAVLINKS") === "true") {
       cy.visit("/");
 
@@ -66,7 +65,6 @@ describe("Routes", () => {
   });
 
   xit("goes to detailed page", () => {
-    cy.visit("/");
     if (Cypress.env("FEATURE_TOGGLE_NAVLINKS") === "true") {
       cy.visit("/");
       cy.get("h4")
@@ -78,7 +76,6 @@ describe("Routes", () => {
   });
 
   it("goes to profile page", () => {
-    cy.visit("/");
     if (Cypress.env("FEATURE_TOGGLE_NAVLINKS") === "true") {
       cy.visit("/");
       cy.get("span")
