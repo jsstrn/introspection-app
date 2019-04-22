@@ -7,29 +7,32 @@ import { render, fireEvent } from "react-testing-library";
 import NavBar from "./NavBar";
 import App from "./../../App";
 
-test("should render 5 links upon load", () => {
-  const { getByText } = render(
-    <BrowserRouter>
-      <NavBar />
-    </BrowserRouter>
-  );
+describe("Navbar", () => {
+  test("should render 3/5 links depending on env", () => {
+    const { getByText } = render(
+      <BrowserRouter>
+        <NavBar />
+      </BrowserRouter>
+    );
+    expect(getByText(/About Introspection/i)).toBeInTheDocument();
+    expect(getByText(/Introspection Radar/i)).toBeInTheDocument();
+    expect(getByText(/Action Plan/i)).toBeInTheDocument();
+    if (process.env.REACT_APP_FEATURE_TOGGLE_NAVLINKS === "true") {
+      expect(getByText(/Admin Panel/i)).toBeInTheDocument();
+      expect(getByText(/Esther T./i)).toBeInTheDocument();
+    }
+  });
 
-  expect(getByText(/About Introspection/i)).toBeInTheDocument();
-  expect(getByText(/Introspection Radar/i)).toBeInTheDocument();
-  expect(getByText(/Action Plan/i)).toBeInTheDocument();
-  expect(getByText(/Admin Panel/i)).toBeInTheDocument();
-  expect(getByText(/Esther T./i)).toBeInTheDocument();
-});
+  test("should link to home page when name is clicked", () => {
+    const history = createMemoryHistory({ initialEntries: ["/radar"] });
+    const { getByTestId, getByText } = render(
+      <Router history={history}>
+        <App />
+      </Router>
+    );
+    const homepageLink = getByTestId("homepage-link");
+    fireEvent.click(homepageLink);
 
-test("should link to home page when name is clicked", () => {
-  const history = createMemoryHistory({ initialEntries: ["/radar"] });
-  const { getByTestId, getByText } = render(
-    <Router history={history}>
-      <App />
-    </Router>
-  );
-  const homepageLink = getByTestId("homepage-link");
-  fireEvent.click(homepageLink);
-
-  expect(getByText(/Singapore's Introspection Radar/i)).toBeInTheDocument();
+    expect(getByText(/Singapore's Introspection Radar/i)).toBeInTheDocument();
+  });
 });
