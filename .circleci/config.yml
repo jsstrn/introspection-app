@@ -148,7 +148,7 @@ jobs:
 
       - run:
           name: Run end to end tests
-          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false --config baseUrl=$BASE_URL
+          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false FEATURE_TOGGLE_NAVLINKS=false --config baseUrl=$BASE_URL
 
   deploy-qa:
     docker:
@@ -194,7 +194,7 @@ jobs:
 
       - run:
           name: Run end to end tests
-          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false --config baseUrl=$BASE_URL
+          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false FEATURE_TOGGLE_NAVLINKS=false --config baseUrl=$BASE_URL
 
   deploy-staging:
     docker:
@@ -240,7 +240,7 @@ jobs:
 
       - run:
           name: Run end to end tests
-          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false --config baseUrl=$BASE_URL
+          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false FEATURE_TOGGLE_NAVLINKS=false --config baseUrl=$BASE_URL
 
 workflows:
   version: 2
