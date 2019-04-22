@@ -18,12 +18,6 @@ class BrickContainer extends Component {
     this.setState({ tableKey: key });
   };
 
-  componentDidMount() {
-    console.log("mounting the comppnent", this.context);
-  }
-  componentDidUpdate() {
-    console.log("updating the comppnent", this.context);
-  }
   render() {
     const { office, data, actions } = this.context;
     const { category } = this.props;
