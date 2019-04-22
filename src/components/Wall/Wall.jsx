@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Table, Container, Button } from "reactstrap";
+import { Table, Container } from "reactstrap";
 import {
   getBrickElement,
   getCategoriesByOffice
@@ -14,23 +14,6 @@ export default class Wall extends Component {
             <h1 className="wall-title text-info text-center font-weight-bolder mb-5">
               {`${value.office}'s Action Plan`}
             </h1>
-            <div className="text-center mb-5">
-              <Button
-                style={{ marginRight: "1em" }}
-                outline
-                color="success"
-                size="lg"
-                active>
-                2018
-              </Button>
-              <Button
-                style={{ marginLeft: "1em" }}
-                outline
-                color="success"
-                size="lg">
-                2019
-              </Button>
-            </div>
             <Table striped>
               <thead>
                 <tr>
@@ -44,9 +27,7 @@ export default class Wall extends Component {
                 {getCategoriesByOffice(value.data, value.office).map(
                   (item, index) => (
                     <tr key={index}>
-                      <th scope="row">
-                        <i className="fas fa-user-circle" /> {item}
-                      </th>
+                      <th scope="row">{item}</th>
                       {value.actions.map((action, index) => (
                         <td data-testid={`${item}-${action}`} key={index}>
                           {
