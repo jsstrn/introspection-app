@@ -4,10 +4,7 @@ import React from "react";
 import { render } from "react-testing-library";
 import BrickContainer from "./BrickContainer";
 import IntroDataContext from "../../IntroDataContext";
-import {
-  getCategoriesByOffice,
-  data
-} from "../../services/serveIntrospections";
+import { data } from "../../services/serveIntrospections";
 
 const value = {
   data,
@@ -27,7 +24,7 @@ const brickContainer = (
 
 describe("BrickContainer", () => {
   it("should render brick component", () => {
-    const { getByText, getByTestId } = render(brickContainer);
+    const { getByText } = render(brickContainer);
     for (const action of value.actions) {
       expect(getByText(action)).toBeInTheDocument();
     }
