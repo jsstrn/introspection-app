@@ -1,3 +1,7 @@
+.button a {
+  color: white;
+}
+
 .jumbotron {
   background-image: url("https://i.imgur.com/gkrEZ5Z.jpg");
   background-size: cover;
@@ -14,5 +18,4 @@
 
 .btn-circle {
   width: 300px;
-  border-radius: 50%;
 }

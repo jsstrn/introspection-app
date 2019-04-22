@@ -7,7 +7,7 @@ function HPJumbotron() {
     <Jumbotron fluid className="jumbotron">
       <p className="mx-auto button">
         <Button color="info" className="btn btn-lg btn-circle">
-          Take the Survey
+          <a href="https://forms.gle/NwP2eNX1UVB42DeP8">Take the Survey</a>
         </Button>
       </p>
     </Jumbotron>
