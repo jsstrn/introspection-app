@@ -6,10 +6,10 @@ import { createMemoryHistory } from "history";
 import { render, fireEvent } from "react-testing-library";
 import AdminPage from "./AdminPage";
 
-const isDev = process.env.NODE_ENV !== "production";
-const getUrl = isDev
-  ? "http://localhost:8080"
-  : "https://staging-introspection-api.herokuapp.com";
+// const isDev = process.env.NODE_ENV !== "production";
+// const getUrl = isDev
+//   ? "http://localhost:8080"
+//   : "https://staging-introspection-api.herokuapp.com";
 
 describe("Admin Page", () => {
   beforeEach(() => {
@@ -19,7 +19,7 @@ describe("Admin Page", () => {
   describe("admin page", () => {
     test("renders upload CSV File title and dropzone, the root and input nodes with the necessary props", () => {
       const history = createMemoryHistory({ initialEntries: ["/"] });
-      const { container, getByText, getByTestId } = render(
+      const { container, getByText } = render(
         <Router history={history}>
           <AdminPage />
         </Router>
