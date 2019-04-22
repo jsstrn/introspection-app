@@ -26,28 +26,32 @@ function NavBar() {
             <h4 className="text-muted font-weight-bolder">Action Plan</h4>
           </Link>
         </NavItem>
-        <NavItem>
-          <Link to="/admin">
-            <h4 className="text-muted font-weight-bolder">Admin Panel</h4>
-          </Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/slice">
-            <h4 className="text-muted font-weight-bolder">Detailed</h4>
-          </Link>
-        </NavItem>
-        <NavItem>
-          <Link to="/profile">
-            <img
-              alt="avatar"
-              width="50px"
-              height="50px"
-              src="https://semantic-ui.com/images/avatar2/large/kristy.png"
-              className="rounded-circle"
-            />
-            <span className="text-muted font-weight-bolder"> Esther T.</span>
-          </Link>
-        </NavItem>
+        {process.env.REACT_APP_FEATURE_TOGGLE_NAVLINKS === "true" && (
+          <>
+            <NavItem>
+              <Link to="/admin">
+                <h4 className="text-muted font-weight-bolder">Admin Panel</h4>
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/slice">
+                <h4 className="text-muted font-weight-bolder">Detailed</h4>
+              </Link>
+            </NavItem>
+            <NavItem>
+              <Link to="/profile">
+                <img
+                  alt="avatar"
+                  width="50px"
+                  height="50px"
+                  src="https://semantic-ui.com/images/avatar2/large/kristy.png"
+                  className="rounded-circle"
+                />
+                <span className="text-muted font-weight-bolder">Esther T.</span>
+              </Link>
+            </NavItem>
+          </>
+        )}
       </Nav>
     </div>
   );
