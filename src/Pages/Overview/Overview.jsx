@@ -6,18 +6,9 @@ import Wall from "../../components/Wall/Wall";
 import Error from "../../components/Error/Error";
 import IntroDataContext from "../../IntroDataContext";
 import Loading from "./../../components/Loading/Loading";
+import withLoadingAndError from "../../components/withLoadingAndError/withLoadingAndError";
 
 class Overview extends Component {
-  renderWall(error, isLoading) {
-    if (isLoading) {
-      return <Loading />;
-    } else {
-      if (!error) {
-        return <Wall />;
-      }
-      return <Error />;
-    }
-  }
   render() {
     return (
       <IntroDataContext.Consumer>
@@ -31,7 +22,7 @@ class Overview extends Component {
             </Container>
             <hr />
             <Container className="mx-auto" style={{ width: "100vw" }}>
-              {this.renderWall(value.error, value.isLoading)}
+              {withLoadingAndError(value.isLoading, value.error, <Wall />)}
             </Container>
           </React.Fragment>
         )}
