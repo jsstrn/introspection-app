@@ -53,7 +53,8 @@ describe("Routes", () => {
   });
 
   it("goes to admin panel page", () => {
-    if (process.env.REACT_APP_FEATURE_TOGGLE_NAVLINKS === "true") {
+    cy.visit("/");
+    if (Cypress.env("FEATURE_TOGGLE_NAVLINKS") === "true") {
       cy.visit("/");
 
       cy.get("h4")
@@ -65,7 +66,8 @@ describe("Routes", () => {
   });
 
   xit("goes to detailed page", () => {
-    if (process.env.REACT_APP_FEATURE_TOGGLE_NAVLINKS === "true") {
+    cy.visit("/");
+    if (Cypress.env("FEATURE_TOGGLE_NAVLINKS") === "true") {
       cy.visit("/");
       cy.get("h4")
         .contains("Detailed")
@@ -76,7 +78,8 @@ describe("Routes", () => {
   });
 
   it("goes to profile page", () => {
-    if (process.env.REACT_APP_FEATURE_TOGGLE_NAVLINKS === "true") {
+    cy.visit("/");
+    if (Cypress.env("FEATURE_TOGGLE_NAVLINKS") === "true") {
       cy.visit("/");
       cy.get("span")
         .contains("Esther T")
