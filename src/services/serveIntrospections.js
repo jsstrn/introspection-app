@@ -185,6 +185,15 @@ const getCategoriesByOffice = (data, office) => {
   return categories;
 };
 
+const getLevelTable = (data, office, categoryName, level) => {
+  const tarOffice = data.filter(person => person.office === office);
+  return tarOffice.filter(person =>
+    person.categories.some(category => {
+      return category.level === level && category.category === categoryName;
+    })
+  );
+};
+
 const getBrickElement = (data, office, categoryName, action) => {
   const tarOffice = data.filter(elem => elem.office === office);
   const persons = [];
@@ -197,17 +206,20 @@ const getBrickElement = (data, office, categoryName, action) => {
         );
       })
     ) {
-      persons.push(person.name);
+      const { name, email, office } = person;
+      const foundPerson = { name, email, office };
+      persons.push(foundPerson);
     }
   });
   return persons;
 };
 
-const getBrickTable = (data, office, categoryName, actionList) => {
+const getBrickTable = (data, office, categoryName, actions) => {
   const result = {};
-  actionList.forEach(elem => (result[elem] = []));
-  actionList.forEach(
-    elem => (result[elem] = getBrickElement(data, office, categoryName, elem))
+  actions.forEach(action => (result[action] = []));
+  actions.forEach(
+    action =>
+      (result[action] = getBrickElement(data, office, categoryName, action))
   );
   return result;
 };
@@ -218,5 +230,6 @@ export {
   getCategoriesByOffice,
   getBrickElement,
   getBrickTable,
+  getLevelTable,
   data
 };

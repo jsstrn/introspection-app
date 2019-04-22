@@ -1,29 +1,24 @@
 import React from "react";
-import { Container } from "reactstrap";
+import { Container, Table } from "reactstrap";
 
-const BrickTable = ({ names, tableTitle }) => {
-  const length = names.length;
-  const third = Math.ceil(length / 3);
-
+const BrickTable = ({ people, tableTitle }) => {
   return (
-    <Container>
-      <p className="gray fw7">{tableTitle}</p>
-      <div className="flex tc gray justify-around">
-        <div className="w-third">
-          {names.slice(0, third).map((a, index) => (
-            <p key={index}>{a}</p>
-          ))}
-        </div>
-        <div className="w-third">
-          {names.slice(third, 2 * third).map((a, index) => (
-            <p key={index}>{a}</p>
-          ))}
-        </div>
-        <div className="w-third">
-          {names.slice(2 * third, names.length).map((a, index) => (
-            <p key={index}>{a}</p>
-          ))}
-        </div>
+    <Container className="w-80 mx-auto">
+      <div>
+        <p className="gray fw7 tc">{tableTitle}</p>
+      </div>
+      <div className="flex tc gray">
+        <Table responsive borderless>
+          <tbody>
+            {people.map((person, index) => (
+              <tr key={index}>
+                <td>{person.name}</td>
+                <td>{person.email}</td>
+                <td>{person.office}</td>
+              </tr>
+            ))}
+          </tbody>
+        </Table>
       </div>
     </Container>
   );
