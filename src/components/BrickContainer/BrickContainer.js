@@ -22,7 +22,6 @@ class BrickContainer extends Component {
     console.log("updating the comppnent", this.context);
   }
   render() {
-    console.log(this.context);
     const { office, data, actions } = this.context;
     const { category } = this.props;
     let { tableKey } = this.state;
