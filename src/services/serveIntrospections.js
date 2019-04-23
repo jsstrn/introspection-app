@@ -1,14 +1,8 @@
 import axios from "axios";
-import { hosts, isValidHost } from "./hosts";
-
-const host = window.location.host;
-const protocol = window.location.protocol;
-const url = isValidHost(host)
-  ? `${protocol}//${hosts[window.location.host]}`
-  : "";
+import api from './api';
 
 export const introspectionData = async params => {
-  const response = await axios.get(`${url}/${params}`);
+  const response = await axios.get(`${api}/${params}`);
   return response.data;
 };
 

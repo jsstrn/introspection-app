@@ -1,18 +1,20 @@
 /// <reference types="Cypress" />
 
+import api from "../../src/services/api";
+
 describe("Handles errors gracefully", () => {
   before(() => {
     cy.server();
 
     cy.route({
       method: "GET",
-      url: "http://localhost:7890/introspection",
+      url: `${api}/introspection`,
       response: []
     });
 
     cy.route({
       method: "GET",
-      url: "http://localhost:7890/actions",
+      url: `${api}/actions`,
       response: []
     });
   });

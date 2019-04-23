@@ -1,5 +1,7 @@
 /// <reference types="Cypress" />
 
+import api from "../../src/services/api";
+
 const wakeServiceUp = url => {
   cy.request(url).then(res => {
     if (res.status === 200) return;
@@ -9,9 +11,6 @@ const wakeServiceUp = url => {
 
 describe("Routes", () => {
   before(() => {
-    const url = "https://auto-introspection-api.herokuapp.com";
-    wakeServiceUp(url);
-
     cy.server();
 
     cy.fixture("introspection").as("introspection");
@@ -19,13 +18,13 @@ describe("Routes", () => {
 
     cy.route({
       method: "GET",
-      url: "http://localhost:7890/introspection",
+      url: `${api}/introspection`,
       response: "@introspection"
     });
 
     cy.route({
       method: "GET",
-      url: "http://localhost:7890/actions",
+      url: `${api}/actions`,
       response: "@actions"
     });
   });
