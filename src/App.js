@@ -24,6 +24,11 @@ class App extends Component {
     try {
       const data = await introspectionData("introspection");
       const actions = await introspectionData("actions");
+
+      if (data.length === 0 || actions.length === 0) {
+        throw new Error("No data avaiable");
+      }
+
       this.setState({
         value: {
           office: "Singapore",

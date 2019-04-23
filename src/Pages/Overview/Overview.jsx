@@ -14,9 +14,12 @@ class Overview extends Component {
           <React.Fragment>
             <HPJumbotron />
             <Container className="mx-auto" style={{ width: "100vw" }}>
-              {process.env.REACT_APP_FEATURE_TOGGLE_PIZZA === "true" && (
-                <FullChart />
-              )}
+              {process.env.REACT_APP_FEATURE_TOGGLE_PIZZA === "true" &&
+                withLoadingAndError(
+                  value.isLoading,
+                  value.error,
+                  <FullChart />
+                )}
             </Container>
             <hr />
             <Container className="mx-auto" style={{ width: "100vw" }}>
