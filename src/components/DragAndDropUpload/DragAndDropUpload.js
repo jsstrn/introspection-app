@@ -1,4 +1,4 @@
-import React, { Component } from "react";
+import React from "react";
 import Dropzone from "react-dropzone";
 import Alert from "react-s-alert";
 import axios from "axios";
@@ -18,13 +18,8 @@ const failedAlertOpts = {
   position: "top-right",
   timeout: "none"
 };
-
-class DragAndDropUpload extends Component {
-  constructor(props) {
-    super(props);
-  }
-
-  handleOnDrop = async (acceptedFile, rejectedFiles) => {
+function DragAndDropUpload(props) {
+  const handleOnDrop = async (acceptedFile, rejectedFiles) => {
     if (rejectedFiles.length > 1) {
       alert("You may only upload one file");
       return;
@@ -44,7 +39,7 @@ class DragAndDropUpload extends Component {
         } else {
           Alert.success("Upload successful", alertOpts);
           window.setTimeout(() => {
-            this.props.history.push("/");
+            props.history.push("/");
           }, 1500);
         }
       } catch (error) {
@@ -58,34 +53,28 @@ class DragAndDropUpload extends Component {
       alert("only csv files accepted");
     }
   };
-
-  render() {
-    return (
-      <div className="mt2">
-        <Dropzone onDrop={this.handleOnDrop} accept=".csv" multiple={false}>
-          {({ getRootProps, getInputProps }) => (
-            <section>
-              <span {...getRootProps()}>
-                <input {...getInputProps()} />
-                <div
-                  className="ba b--dashed b--light-silver pv4 center tc bw3 br-pill f4"
-                  data-testid="uploader"
-                >
-                  <i className="fas fa-cloud-upload-alt fa-6x blue" />
-                  <p>
-                    <span className="fw6 pointer hover-blue">
-                      Choose a file
-                    </span>{" "}
-                    or drag it here.
-                  </p>
-                </div>
-              </span>
-            </section>
-          )}
-        </Dropzone>
-      </div>
-    );
-  }
+  return (
+    <div className="mt2">
+      <Dropzone onDrop={handleOnDrop} accept=".csv" multiple={false}>
+        {({ getRootProps, getInputProps }) => (
+          <section>
+            <span {...getRootProps()}>
+              <input {...getInputProps()} />
+              <div
+                className="ba b--dashed b--light-silver pv4 center tc bw3 br-pill f4"
+                data-testid="uploader"
+              >
+                <i className="fas fa-cloud-upload-alt fa-6x blue" />
+                <p>
+                  <span className="fw6 pointer hover-blue">Choose a file</span>{" "}
+                  or drag it here.
+                </p>
+              </div>
+            </span>
+          </section>
+        )}
+      </Dropzone>
+    </div>
+  );
 }
-
 export default DragAndDropUpload;
