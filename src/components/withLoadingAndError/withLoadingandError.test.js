@@ -28,12 +28,12 @@ describe("withLoadingAndError", () => {
 
     it("returns error component when error is not null", () => {
       const isLoading = false;
-      const error = {};
+      const error = new Error("No data available");
 
       const component = withLoadingAndError(isLoading, error);
 
       const { queryByText } = render(component);
-      expect(queryByText("Something exploded.")).toBeInTheDocument();
+      expect(queryByText("No data available")).toBeInTheDocument();
     });
 
     it("returns given component when error is null", () => {

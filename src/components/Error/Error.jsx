@@ -1,9 +1,9 @@
 import React from "react";
 
-function Error() {
+function Error({error}) {
   return (
-    <div>
-      <h1>Something exploded.</h1>
+    <div data-cy="error">
+      <h1>{error.message}</h1>
     </div>
   );
 }

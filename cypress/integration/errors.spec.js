@@ -21,5 +21,11 @@ describe("Handles errors gracefully", () => {
 
   it("gets an error message when no data is provided", () => {
     cy.visit("/");
+
+    cy.get("[data-cy=error]").should(el => {
+      expect(el).to.have.length(2);
+      expect(el.first()).to.contain("No data available");
+      expect(el.last()).to.contain("No data available");
+    });
   });
 });

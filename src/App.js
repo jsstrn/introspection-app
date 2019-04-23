@@ -26,7 +26,7 @@ class App extends Component {
       const actions = await introspectionData("actions");
 
       if (data.length === 0 || actions.length === 0) {
-        throw new Error("No data avaiable");
+        throw new Error("No data available");
       }
 
       this.setState({
