@@ -4,8 +4,8 @@ import { createMemoryHistory } from "history";
 import React from "react";
 import { BrowserRouter, Router } from "react-router-dom";
 import { render, fireEvent } from "react-testing-library";
-import NavBar from "./NavBar";
-import App from "./../../App";
+import NavBar from "../components/NavBar/NavBar";
+import App from "../App";
 
 describe("Navbar", () => {
   test("should render 3/5 links depending on env", () => {

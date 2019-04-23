@@ -2,12 +2,10 @@ import "jest-dom/extend-expect";
 import "react-testing-library/cleanup-after-each";
 import React from "react";
 import { render } from "react-testing-library";
-import Wall from "./Wall";
-import IntroDataContext from "../../IntroDataContext";
-import {
-  getCategoriesByOffice,
-  data
-} from "../../services/serveIntrospections";
+import Wall from "../components/Wall/Wall.jsx";
+import IntroDataContext from "../IntroDataContext";
+import { getCategoriesByOffice } from "../services/serveIntrospections";
+import { data } from "./seedDataTests";
 
 const value = {
   office: "Singapore",

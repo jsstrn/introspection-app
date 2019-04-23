@@ -2,9 +2,9 @@ import "jest-dom/extend-expect";
 import "react-testing-library/cleanup-after-each";
 import React from "react";
 import { render } from "react-testing-library";
-import BrickContainer from "./BrickContainer";
-import IntroDataContext from "../../IntroDataContext";
-import { data } from "../../services/serveIntrospections";
+import BrickContainer from "../components/BrickContainer/BrickContainer";
+import IntroDataContext from "../IntroDataContext";
+import { data } from "./seedDataTests";
 
 const value = {
   data,

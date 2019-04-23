@@ -2,7 +2,7 @@ import "jest-dom/extend-expect";
 import "react-testing-library/cleanup-after-each";
 import React from "react";
 import { render } from "react-testing-library";
-import Brick from "./Brick";
+import Brick from "../components/Brick/Brick.jsx";
 
 const brickObject = {
   explore: ["a", "ab", "ac"],

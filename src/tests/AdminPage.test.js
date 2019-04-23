@@ -4,7 +4,7 @@ import React from "react";
 import { Router } from "react-router-dom";
 import { createMemoryHistory } from "history";
 import { render, fireEvent } from "react-testing-library";
-import AdminPage from "./AdminPage";
+import AdminPage from "../Pages/AdminPage/AdminPage.jsx";
 
 // const isDev = process.env.NODE_ENV !== "production";
 // const getUrl = isDev
