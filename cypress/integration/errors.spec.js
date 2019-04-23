@@ -25,9 +25,13 @@ describe("Handles errors gracefully", () => {
     cy.scrollTo("bottom");
 
     cy.get("[data-cy=error]").should(el => {
-      expect(el).to.have.length(2);
-      expect(el.first()).to.contain("No data available");
-      expect(el.last()).to.contain("No data available");
+      if (Cypress.env("FEATURE_TOGGLE_PIZZA") === "true") {
+        expect(el).to.have.length(2);
+        expect(el.last()).to.contain("No data available");
+      } else {
+        expect(el).to.have.length(1);
+        expect(el.first()).to.contain("No data available");
+      }
     });
   });
 });
