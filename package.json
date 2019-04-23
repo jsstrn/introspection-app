@@ -11,7 +11,7 @@
     "eject": "react-scripts eject",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
-    "cy:ci": "npm start & npm run mock-server & npm run cy:run",
+    "cy:ci": "npm start & npm run cy:run",
     "mock-server": "json-server mockServer.json --port 7890"
   },
   "eslintConfig": {

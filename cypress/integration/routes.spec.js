@@ -1,15 +1,33 @@
 /// <reference types="Cypress" />
 
+const wakeServiceUp = url => {
+  cy.request(url).then(res => {
+    if (res.status === 200) return;
+    wakeServiceUp(url);
+  });
+};
+
 describe("Routes", () => {
   before(() => {
-    const wakeServiceUp = url => {
-      cy.request(url).then(res => {
-        if (res.status === 200) return;
-        wakeServiceUp(url);
-      });
-    };
+    const url = "https://auto-introspection-api.herokuapp.com";
+    wakeServiceUp(url);
 
-    wakeServiceUp("https://auto-introspection-api.herokuapp.com");
+    cy.server();
+
+    cy.fixture("introspection").as("introspection");
+    cy.fixture("actions").as("actions");
+
+    cy.route({
+      method: "GET",
+      url: "http://localhost:7890/introspection",
+      response: "@introspection"
+    });
+
+    cy.route({
+      method: "GET",
+      url: "http://localhost:7890/actions",
+      response: "@actions"
+    });
   });
 
   it("goes to home page", () => {

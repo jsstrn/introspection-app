@@ -22,17 +22,4 @@ describe("Navbar", () => {
       expect(getByText(/Esther T./i)).toBeInTheDocument();
     }
   });
-
-  test("should link to home page when name is clicked", () => {
-    const history = createMemoryHistory({ initialEntries: ["/radar"] });
-    const { getByTestId, getByText } = render(
-      <Router history={history}>
-        <App />
-      </Router>
-    );
-    const homepageLink = getByTestId("homepage-link");
-    fireEvent.click(homepageLink);
-
-    expect(getByText(/Singapore's Introspection Radar/i)).toBeInTheDocument();
-  });
 });
