@@ -6,7 +6,6 @@ export class AdminPage extends Component {
   renderCsvUploader() {
     return (
       <React.Fragment>
-        <h3>🗄 Upload CSV File</h3>
         <DragAndDropUpload history={this.props.history} />
       </React.Fragment>
     );
@@ -18,7 +17,7 @@ export class AdminPage extends Component {
         className="mx-auto text-center mt-5"
         style={{ width: "100vw" }}
       >
-        <h1 className="text-info font-weight-bolder">Admin Page</h1>
+        <h1 className="text-info font-weight-bolder mb4">Admin Panel</h1>
         {process.env.REACT_APP_FEATURE_TOGGLE_UPLOADER === "true" &&
           this.renderCsvUploader()}
       </Container>

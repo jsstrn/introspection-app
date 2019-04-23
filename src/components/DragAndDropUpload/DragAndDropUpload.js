@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import Dropzone from "react-dropzone";
-import bytes from "bytes";
 import Alert from "react-s-alert";
+import axios from "axios";
 
 const isDev = process.env.NODE_ENV !== "production";
 const getUrl = isDev
@@ -13,48 +13,47 @@ const alertOpts = {
   position: "top-right",
   timeout: 1500
 };
+const failedAlertOpts = {
+  effect: "genie",
+  position: "top-right",
+  timeout: "none"
+};
 
 class DragAndDropUpload extends Component {
   constructor(props) {
     super(props);
-    this.state = { filename: "", filesize: "", fileuploadtime: "" };
   }
 
-  handleSubmit = async files => {
-    const formData = new FormData();
-    const csv = files;
-    console.log(csv);
-    formData.append("file", csv);
-    try {
-      const res = await fetch(`${getUrl}/upload`, {
-        method: "POST",
-        body: formData,
-        credentials: "include"
-      });
-      // const data = await res.json();
-      if (res.status !== 201) {
-        Alert.warning("File upload failed, please try again", alertOpts);
-      } else {
-        Alert.warning("Upload successful", alertOpts);
-        window.setTimeout(() => {
-          this.props.history.push("/");
-        }, 1500);
-      }
-    } catch (error) {
-      Alert.warning("File upload failed, please try again", alertOpts);
-      console.error(error);
+  handleOnDrop = async (acceptedFile, rejectedFiles) => {
+    if (rejectedFiles.length > 1) {
+      alert("You may only upload one file");
+      return;
     }
-  };
-
-  handleOnDrop = acceptedFiles => {
-    if (acceptedFiles.length !== 0) {
-      const modified = new Date(Date.now());
-      this.setState({
-        filename: acceptedFiles[0].name,
-        filesize: bytes(acceptedFiles[0].size),
-        fileuploadtime: modified.toLocaleString()
-      });
-      this.handleSubmit(acceptedFiles[0]);
+    if (acceptedFile.length) {
+      const formData = new FormData();
+      formData.append("file", acceptedFile[0]);
+      try {
+        const res = await axios({
+          method: "POST",
+          url: `${getUrl}/upload`,
+          data: formData,
+          config: { headers: { "Content-Type": "multipart/form-data" } }
+        });
+        if (res.status !== 201) {
+          Alert.error("File upload failed, please try again", failedAlertOpts);
+        } else {
+          Alert.success("Upload successful", alertOpts);
+          window.setTimeout(() => {
+            this.props.history.push("/");
+          }, 1500);
+        }
+      } catch (error) {
+        Alert.error(
+          `File upload failed. ${error.response.data.message}`,
+          failedAlertOpts
+        );
+        console.error(error);
+      }
     } else {
       alert("only csv files accepted");
     }
@@ -68,9 +67,8 @@ class DragAndDropUpload extends Component {
             <section>
               <span {...getRootProps()}>
                 <input {...getInputProps()} />
-
                 <div
-                  className="ba b--dashed b--blue pv4 center tc bw3 br4 f4"
+                  className="ba b--dashed b--light-silver pv4 center tc bw3 br-pill f4"
                   data-testid="uploader"
                 >
                   <i className="fas fa-cloud-upload-alt fa-6x blue" />
@@ -85,29 +83,6 @@ class DragAndDropUpload extends Component {
             </section>
           )}
         </Dropzone>
-        <div>
-          <table className="center w-100 tc ma4 f4">
-            <thead>
-              <tr className="stripe-dark">
-                <th colSpan="3">Uploaded Files</th>
-              </tr>
-            </thead>
-            <thead>
-              <tr className="stripe-dark">
-                <th className="w-third">File Name</th>
-                <th className="w-third">File Size</th>
-                <th className="w-third">Uploaded</th>
-              </tr>
-            </thead>
-            <tbody>
-              <tr className="stripe-dark">
-                <td>{this.state.filename}</td>
-                <td>{this.state.filesize}</td>
-                <td>{this.state.fileuploadtime}</td>
-              </tr>
-            </tbody>
-          </table>
-        </div>
       </div>
     );
   }
