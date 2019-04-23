@@ -1,14 +1,14 @@
 import axios from "axios";
-import api from './api';
-import { hosts, isValidHost } from "./hosts";
+import api from "./api";
+// import { hosts, isValidHost } from "./hosts";
 import { data } from "../tests/seedDataTests";
 const _ = require("lodash");
 
-const host = window.location.host;
-const protocol = window.location.protocol;
-const url = isValidHost(host)
-  ? `${protocol}//${hosts[window.location.host]}`
-  : "";
+// const host = window.location.host;
+// const protocol = window.location.protocol;
+// const url = isValidHost(host)
+//   ? `${protocol}//${hosts[window.location.host]}`
+//   : "";
 
 export const introspectionData = async params => {
   const response = await axios.get(`${api}/${params}`);
