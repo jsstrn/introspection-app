@@ -38,6 +38,8 @@ describe("Routes", () => {
 
     cy.url().should("include", "/home");
 
+    cy.scrollTo("bottom");
+
     if (Cypress.env("FEATURE_TOGGLE_PIZZA") === "true") {
       cy.get("h1.radar-title").should(
         "contain",
