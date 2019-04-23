@@ -14,31 +14,16 @@ class Radar extends Component {
   static contextType = IntroDataContext;
   constructor(props, context) {
     super(props, context);
-    this.state = {
-      radius: [],
-      theta: [],
-      names: []
-    };
+    this.state = {};
   }
-
-  async componentDidMount() {
-    await this.renderMarkers();
-  }
-
-  renderMarkers = async () => {
-    await this.setState({
-      radius: levelArrayRandomized(),
-      theta: thetaArray(),
-      names: nameArray()
-    });
-  };
-
-  openAlert = () => {
-    alert("i am an alert");
-  };
 
   render() {
-    const { radius, theta, names } = this.state;
+    const { data } = this.context;
+    console.log(data);
+    const radius = levelArrayRandomized(data);
+    const theta = thetaArray(data);
+    const names = nameArray(data);
+
     return (
       <React.Fragment>
         <h1 className="tc radar-title">Singapore's Introspection Radar</h1>
@@ -46,7 +31,7 @@ class Radar extends Component {
           className="tc mt0 center"
           useResizeHandler={true}
           data={[
-            ...categoriesAngleArray().map(a => ({
+            ...categoriesAngleArray(data).map(a => ({
               r: [0, 6.2],
               theta: [0, a],
               type: "scatterpolar",
@@ -124,11 +109,12 @@ class Radar extends Component {
                 showgrid: false,
                 tickmode: "array",
                 showline: false,
-                tickvals: getCategories().map(
-                  (a, index) => (index + 1) * oneAngle() - oneAngle() / 2
+                tickvals: getCategories(data).map(
+                  (a, index) =>
+                    (index + 1) * oneAngle(data) - oneAngle(data) / 2
                 ),
                 ticks: "",
-                ticktext: getCategories(),
+                ticktext: getCategories(data),
                 tickfont: {
                   size: 18,
                   color: "gray"

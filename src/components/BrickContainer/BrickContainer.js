@@ -22,7 +22,6 @@ class BrickContainer extends Component {
     const { office, data, actions } = this.context;
     const { category } = this.props;
     let { tableKey } = this.state;
-
     const brickObject = getBrickTable(data, office, category, actions);
     if (!tableKey) {
       tableKey = Object.keys(brickObject)[0];

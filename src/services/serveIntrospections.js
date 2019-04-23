@@ -1,6 +1,6 @@
 import axios from "axios";
 import api from "./api";
-import { data } from "../tests/seedDataTests";
+// import { data } from "../tests/seedDataTests";
 const _ = require("lodash");
 
 export const introspectionData = async params => {
@@ -66,20 +66,20 @@ const getBrickTable = (data, office, categoryName, actions) => {
   return result;
 };
 
-const getCategories = () => {
+const getCategories = data => {
   const categories = data[0].categories.map(a => a.category);
   return categories;
 };
 
-const oneAngle = () => {
-  return 360 / getCategories().length;
+const oneAngle = data => {
+  return 360 / getCategories(data).length;
 };
 
-const getNames = () => {
+const getNames = data => {
   return data.map(a => a.name);
 };
 
-const nameArray = () => {
+const nameArray = data => {
   const arr = [];
   getNames(data).forEach(function(element) {
     _.times(getCategories(data).length, () => arr.push(element));
@@ -87,7 +87,7 @@ const nameArray = () => {
   return arr;
 };
 
-const categoriesAngleArray = () => {
+const categoriesAngleArray = data => {
   const arr = [0];
   for (let i = 1; i < getCategories(data).length; i++) {
     arr.push(oneAngle(data) * i);
@@ -95,14 +95,14 @@ const categoriesAngleArray = () => {
   return arr;
 };
 
-const levelArray = () => {
+const levelArray = data => {
   const arr = data.map(a => a.categories.map(a => parseInt(a.level)));
   return _.flatten(arr);
 };
 
-const levelArrayRandomized = () => {
+const levelArrayRandomized = data => {
   const radius = [];
-  levelArray().forEach(function(element) {
+  levelArray(data).forEach(function(element) {
     switch (element) {
       case 1:
         radius.push(_.random(0.7, 1.8));
@@ -123,13 +123,13 @@ const levelArrayRandomized = () => {
   return radius;
 };
 
-const thetaArraySingle = () => {
+const thetaArraySingle = data => {
   return getCategories(data).map((a, index) =>
     _.random(index * oneAngle(data) + 10, (index + 1) * oneAngle(data) - 10)
   );
 };
 
-const thetaArray = () => {
+const thetaArray = data => {
   const arr = [];
   data.forEach(function(element) {
     arr.push(thetaArraySingle(data));
