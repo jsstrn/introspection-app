@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { Container } from "reactstrap";
 import HPJumbotron from "../../components/HPJumbotron/HPJumbotron";
-import FullChart from "./../../Radar/FullChart";
+import Radar from "../../components/Radar/Radar.js";
 import Wall from "../../components/Wall/Wall";
 import IntroDataContext from "../../IntroDataContext";
 import withLoadingAndError from "../../components/withLoadingAndError/withLoadingAndError";
@@ -18,7 +18,7 @@ class Overview extends Component {
                 withLoadingAndError(
                   value.isLoading,
                   value.error,
-                  <FullChart />
+                  <Radar />
                 )}
             </Container>
             <hr />
