@@ -104,6 +104,9 @@ jobs:
           name: Run integration tests
           command: npm run cy:ci
 
+      - store_artifacts:
+          path: cypress/screenshots
+
   deploy-auto:
     docker:
       - image: circleci/node:10.15.3
