@@ -1,24 +1,10 @@
 import axios from "axios";
 import api from "./api";
-// import { data } from "../tests/seedDataTests";
 const _ = require("lodash");
 
 export const introspectionData = async params => {
   const response = await axios.get(`${api}/${params}`);
   return response.data;
-};
-
-const findOne = (data, tarName) => {
-  const oneDatum = data.find(a => a.name === tarName);
-  return [oneDatum];
-};
-
-const findAllExcept = (data, tarName) => {
-  const oneDatum = data.find(a => a.name === tarName);
-  const index = data.indexOf(oneDatum);
-  const copy = data.slice();
-  copy.splice(index, 1);
-  return copy;
 };
 
 const getCategoriesByOffice = (data, office) => {
@@ -64,6 +50,11 @@ const getBrickTable = (data, office, categoryName, actions) => {
       (result[action] = getBrickElement(data, office, categoryName, action))
   );
   return result;
+};
+
+const getAvailableOffices = data => {
+  const availOffices = _.uniq(data.map(a => a.office));
+  return availOffices;
 };
 
 const getCategories = data => {
@@ -138,8 +129,6 @@ const thetaArray = data => {
 };
 
 export {
-  findOne,
-  findAllExcept,
   getCategoriesByOffice,
   getBrickElement,
   getBrickTable,
@@ -151,5 +140,6 @@ export {
   categoriesAngleArray,
   levelArrayRandomized,
   thetaArraySingle,
-  thetaArray
+  thetaArray,
+  getAvailableOffices
 };
