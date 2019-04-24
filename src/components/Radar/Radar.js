@@ -6,27 +6,47 @@ import {
   getCategories,
   levelArrayRandomized,
   thetaArray,
-  oneAngle
+  oneAngle,
+  getAvailableOffices
 } from "../../services/serveIntrospections.js";
 import IntroDataContext from "../../IntroDataContext";
+import FilterBar from "../FilterBar/FilterBar.jsx";
 
 class Radar extends Component {
   static contextType = IntroDataContext;
   constructor(props, context) {
     super(props, context);
-    this.state = {};
+    this.state = {
+      office: ""
+    };
   }
+
+  handleOfficeSelect = office => {
+    const officeSelected = office === "All" ? "" : office;
+    this.setState({ office: officeSelected });
+  };
 
   render() {
     const { data } = this.context;
-    console.log(data);
-    const radius = levelArrayRandomized(data);
-    const theta = thetaArray(data);
-    const names = nameArray(data);
+    const { office } = this.state;
+    const offices = ["All", ...getAvailableOffices(data)];
+    const filteredData = data.filter(a => a.office.includes(office));
+    const radius = levelArrayRandomized(filteredData);
+    const theta = thetaArray(filteredData);
+    const names = nameArray(filteredData);
 
     return (
       <React.Fragment>
-        <h1 className="tc radar-title">Singapore's Introspection Radar</h1>
+        <div>
+          <FilterBar
+            handleClick={this.handleOfficeSelect}
+            offices={offices}
+            selected={office}
+          />
+        </div>
+        <h1 className="tc radar-title">
+          {office ? `${office}'s ` : ""}Introspection Radar
+        </h1>
         <Plot
           className="tc mt0 center"
           useResizeHandler={true}
