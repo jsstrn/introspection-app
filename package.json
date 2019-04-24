@@ -4,10 +4,12 @@
   "private": true,
   "scripts": {
     "start": "react-scripts --max_old_space_size=8192 start",
+    "start:dev": "concurrently 'npm:start' 'npm:mock-server'",
     "build": "react-scripts --max_old_space_size=8192 build",
     "test": "react-scripts test",
     "test:once": "react-scripts test --no-watch",
     "test:ci": "CI=true react-scripts test",
+    "test:all": "npm run test:once & npm run cy:run",
     "eject": "react-scripts eject",
     "cy:open": "cypress open",
     "cy:run": "cypress run",
@@ -40,6 +42,7 @@
     "reactstrap": "^8.0.0"
   },
   "devDependencies": {
+    "concurrently": "^4.1.0",
     "cypress": "^3.2.0",
     "eslint-plugin-cypress": "^2.2.1",
     "history": "^4.9.0",
