@@ -18,9 +18,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run test:all",
-      "pre-push": "npm run test:all",
-      "post-merge": "npm install && npm run test:all"
+      "pre-push": "npm run test:all"
     }
   },
   "eslintConfig": {
