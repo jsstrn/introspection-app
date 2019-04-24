@@ -2,13 +2,6 @@
 
 import api from "../../src/services/api";
 
-const wakeServiceUp = url => {
-  cy.request(url).then(res => {
-    if (res.status === 200) return;
-    wakeServiceUp(url);
-  });
-};
-
 describe("Routes", () => {
   beforeEach(() => {
     cy.server();
