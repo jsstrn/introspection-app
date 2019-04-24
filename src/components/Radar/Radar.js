@@ -37,7 +37,7 @@ class Radar extends Component {
 
     return (
       <React.Fragment>
-        <div>
+        <div className="tc center mb3 mt3">
           <FilterBar
             handleClick={this.handleOfficeSelect}
             offices={offices}
