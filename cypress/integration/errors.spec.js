@@ -3,7 +3,7 @@
 import api from "../../src/services/api";
 
 describe("Handles errors gracefully", () => {
-  before(() => {
+  beforeEach(() => {
     cy.server();
 
     cy.route({

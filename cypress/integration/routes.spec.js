@@ -10,7 +10,7 @@ const wakeServiceUp = url => {
 };
 
 describe("Routes", () => {
-  before(() => {
+  beforeEach(() => {
     cy.server();
 
     cy.fixture("introspection").as("introspection");
