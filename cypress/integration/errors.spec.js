@@ -20,7 +20,7 @@ describe("Handles errors gracefully", () => {
   });
 
   it("gets an error message when no data is provided", () => {
-    cy.visit("/");
+    cy.visit("/", { timeout: 120000 });
 
     cy.scrollTo("bottom");
 
