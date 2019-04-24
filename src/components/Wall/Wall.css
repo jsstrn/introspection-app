@@ -1,0 +1,13 @@
+.categoryLink {
+  color: black;
+}
+
+.categoryLink:hover {
+  color: #17a2b8;
+  text-decoration: none;
+}
+
+.table td,
+.actionHeader {
+  text-align: center;
+}
