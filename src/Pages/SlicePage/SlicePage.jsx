@@ -35,12 +35,12 @@ export class SlicePage extends Component {
 
   componentDidMount() {
     this.setState({
-      office: this.props.location
+      office: this.props.location.state
         ? this.props.location.state.office
         : this.context.office
         ? this.context.office
         : "All",
-      category: this.props.location
+      category: this.props.location.state
         ? this.props.location.state.category
         : "Equitable Tech"
     });

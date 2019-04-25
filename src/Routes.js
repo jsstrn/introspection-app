@@ -12,10 +12,6 @@ const Routes = () => {
     <React.Fragment>
       <Switch>
         <Route path="/home" component={Overview} />
-        <Route
-          path="/detailed/:category"
-          render={props => <SlicePage {...props} />}
-        />
         <Route path="/detailed" component={SlicePage} />
         <Route path="/radar" component={RadarPage} />
         <Route path="/plan" component={PlanPage} />

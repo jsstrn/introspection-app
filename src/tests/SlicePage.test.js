@@ -3,7 +3,9 @@ import "react-testing-library/cleanup-after-each";
 import React from "react";
 import { render, fireEvent } from "react-testing-library";
 import SlicePage from "../Pages/SlicePage/SlicePage";
+import Routes from "../Routes";
 import IntroDataContext from "../IntroDataContext";
+import { createMemoryHistory } from "history";
 import { MemoryRouter } from "react-router-dom";
 import { data } from "./seedDataTests";
 
@@ -14,15 +16,15 @@ const value = {
     "Would like to deepen",
     "Would like to share"
   ],
-  office: "All",
+  office: "Singapore",
   error: null,
   isLoading: false
 };
 
 const slicePage = (
-  <MemoryRouter>
+  <MemoryRouter initialEntries={["/detailed"]}>
     <IntroDataContext.Provider value={value}>
-      <SlicePage />
+      <Routes />
     </IntroDataContext.Provider>
   </MemoryRouter>
 );
