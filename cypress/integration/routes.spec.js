@@ -104,14 +104,4 @@ describe("Routes", () => {
       cy.get("h1").should("contain", "Equitable Tech");
     }
   });
-
-  it("goes to profile page", () => {
-    if (Cypress.env("FEATURE_TOGGLE_NAVLINKS") === "true") {
-      cy.visit("/");
-      cy.get("span")
-        .contains("Esther T")
-        .click();
-      cy.url().should("include", "/profile");
-    }
-  });
 });

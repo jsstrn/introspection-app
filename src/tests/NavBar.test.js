@@ -19,7 +19,7 @@ describe("Navbar", () => {
     expect(getByText(/Action Plan/i)).toBeInTheDocument();
     if (process.env.REACT_APP_FEATURE_TOGGLE_NAVLINKS === "true") {
       expect(getByText(/Admin Panel/i)).toBeInTheDocument();
-      expect(getByText(/Esther T./i)).toBeInTheDocument();
+      expect(getByText(/Login/i)).toBeInTheDocument();
     }
   });
 });
