@@ -68,7 +68,7 @@ export default class Wall extends Component {
                       pathname: `/detailed`,
                       state: { office, category: item }
                     }}
-                    className="categoryLink"
+                    className=" ba b--moon-gray  bw1 pv2 ph3 navy no-underline hover-bg-black hover-white"
                   >
                     {item}
                   </Link>
