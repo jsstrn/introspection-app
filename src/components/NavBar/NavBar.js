@@ -37,7 +37,7 @@ function NavBar() {
                       alt="avatar"
                       width="25px"
                       height="25px"
-                      src={profilePic}
+                      src={`${profilePic}`}
                       className="rounded-circle"
                     />
                     <span className="text-muted font-weight-bolder">

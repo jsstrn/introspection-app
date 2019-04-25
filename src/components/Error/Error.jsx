@@ -1,7 +1,7 @@
 import React from "react";
 
 function getErrorMsg(error) {
-  switch (error) {
+  switch (error.message) {
     case "Request failed with status code 401":
       return "Please login.";
     default:
