@@ -22,7 +22,7 @@ describe("Routes", () => {
     });
   });
 
-  it("goes to home page", () => {
+  it.skip("goes to home page", () => {
     cy.visit("/", { timeout: 120000 });
 
     cy.get("h4")
@@ -46,7 +46,7 @@ describe("Routes", () => {
     cy.get("tr td").should("have.attr", "data-testid");
   });
 
-  it("goes to the detailed action plan page when a category in the table on the homepage is clicked", () => {
+  it.skip("goes to the detailed action plan page when a category in the table on the homepage is clicked", () => {
     cy.visit("/", { timeout: 120000 });
     cy.get(".categoryLink")
       .first()
