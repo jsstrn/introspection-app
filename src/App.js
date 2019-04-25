@@ -5,7 +5,6 @@ import { BrowserRouter } from "react-router-dom";
 import Alert from "react-s-alert";
 import { introspectionData } from "../src/services/serveIntrospections";
 import IntroDataContext from "./IntroDataContext";
-import queryString from "querystring";
 
 class App extends Component {
   constructor(props) {
@@ -22,10 +21,9 @@ class App extends Component {
   }
 
   async componentDidMount() {
-    let cookieValue = document.cookie.replace(
-      /(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/,
-      "$1"
-    );
+    // eslint-disable-next-line
+    const regex = new RegExp("(?:(?:^|.*;s*)users*=s*([^;]*).*$)|^.*$");
+    let cookieValue = document.cookie.replace(regex, "$1");
     try {
       const data = await introspectionData("introspection");
       const actions = await introspectionData("actions");
