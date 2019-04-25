@@ -59,7 +59,7 @@ export default class Wall extends Component {
                 <th scope="row">
                   <Link
                     to={{
-                      pathname: `/slice`,
+                      pathname: `/detailed`,
                       state: { office, category: item }
                     }}
                     className="categoryLink"

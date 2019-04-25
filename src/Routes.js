@@ -13,10 +13,10 @@ const Routes = () => {
       <Switch>
         <Route path="/home" component={Overview} />
         <Route
-          path="/slice/:category"
+          path="/detailed/:category"
           render={props => <SlicePage {...props} />}
         />
-        <Route path="/slice" component={SlicePage} />
+        <Route path="/detailed" component={SlicePage} />
         <Route path="/radar" component={RadarPage} />
         <Route path="/plan" component={PlanPage} />
         <Route path="/admin" component={AdminPage} />

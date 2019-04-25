@@ -68,7 +68,7 @@ function NavBar() {
               </Link>
             </NavItem>
             <NavItem>
-              <Link to="/slice">
+              <Link to="/detailed">
                 <h4 className="text-muted font-weight-bolder">Detailed</h4>
               </Link>
             </NavItem>

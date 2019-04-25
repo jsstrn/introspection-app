@@ -76,7 +76,7 @@ describe("Wall", () => {
         </IntroDataContext.Provider>
       </MemoryRouter>
     );
-    expect(getByText("Economic Justice")).toHaveAttribute("href", "/slice");
+    expect(getByText("Economic Justice")).toHaveAttribute("href", "/detailed");
   });
   it("renders correct data when filter by office", () => {
     const { getByText, getByTestId } = render(

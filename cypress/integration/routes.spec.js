@@ -48,7 +48,7 @@ describe("Routes", () => {
     cy.get(".categoryLink")
       .first()
       .click();
-    cy.url().should("include", "/slice");
+    cy.url().should("include", "/detailed");
     cy.get("h1").should("contain", "Society and Privilege");
     cy.get('p[data-testid="action-val-1"]')
       .first()
@@ -97,7 +97,7 @@ describe("Routes", () => {
       cy.get("h4")
         .contains("Detailed")
         .click();
-      cy.url().should("include", "/slice");
+      cy.url().should("include", "/detailed");
       cy.get("h1").should("contain", "Equitable Tech");
     }
   });
