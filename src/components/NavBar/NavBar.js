@@ -2,6 +2,7 @@ import React from "react";
 import { Nav, NavItem } from "reactstrap";
 import { NavLink as Link } from "react-router-dom";
 import "./NavBar.css";
+import IntroDataContext from "../../IntroDataContext";
 
 function NavBar() {
   return (
@@ -26,6 +27,39 @@ function NavBar() {
             <h4 className="text-muted font-weight-bolder">Action Plan</h4>
           </Link>
         </NavItem>
+        <IntroDataContext.Consumer>
+          {({ name }) =>
+            name ? (
+              <React.Fragment>
+                <NavItem>
+                  <a href="http://localhost:7890/auth/logout">
+                    <h4 className="text-muted font-weight-bolder">Logout</h4>
+                  </a>
+                </NavItem>
+                <NavItem>
+                  <Link to="/profile">
+                    <img
+                      alt="avatar"
+                      width="25px"
+                      height="25px"
+                      src="https://semantic-ui.com/images/avatar2/large/kristy.png"
+                      className="rounded-circle"
+                    />
+                    <span className="text-muted font-weight-bolder">
+                      {name}
+                    </span>
+                  </Link>
+                </NavItem>
+              </React.Fragment>
+            ) : (
+              <NavItem>
+                <a href="http://localhost:7890/auth/google">
+                  <h4 className="text-muted font-weight-bolder">Login</h4>
+                </a>
+              </NavItem>
+            )
+          }
+        </IntroDataContext.Consumer>
         {process.env.REACT_APP_FEATURE_TOGGLE_NAVLINKS === "true" && (
           <>
             <NavItem>

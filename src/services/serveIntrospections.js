@@ -3,7 +3,9 @@ import api from "./api";
 const _ = require("lodash");
 
 export const introspectionData = async params => {
-  const response = await axios.get(`${api}/${params}`);
+  const response = await axios.get(`${api}/${params}`, {
+    withCredentials: true
+  });
   return response.data;
 };
 

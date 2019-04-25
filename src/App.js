@@ -5,6 +5,7 @@ import { BrowserRouter } from "react-router-dom";
 import Alert from "react-s-alert";
 import { introspectionData } from "../src/services/serveIntrospections";
 import IntroDataContext from "./IntroDataContext";
+import queryString from "querystring";
 
 class App extends Component {
   constructor(props) {
@@ -21,6 +22,10 @@ class App extends Component {
   }
 
   async componentDidMount() {
+    let cookieValue = document.cookie.replace(
+      /(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/,
+      "$1"
+    );
     try {
       const data = await introspectionData("introspection");
       const actions = await introspectionData("actions");
@@ -31,6 +36,7 @@ class App extends Component {
 
       this.setState({
         value: {
+          name: cookieValue,
           office: "Singapore",
           data,
           actions,
@@ -51,8 +57,8 @@ class App extends Component {
     return (
       <BrowserRouter>
         <React.Fragment>
-          <NavBar />
           <IntroDataContext.Provider value={this.state.value}>
+            <NavBar />
             <Routes />
           </IntroDataContext.Provider>
           <Alert />

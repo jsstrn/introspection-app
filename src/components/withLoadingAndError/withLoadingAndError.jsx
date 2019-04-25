@@ -13,6 +13,6 @@ export default function withLoadingAndError(
     if (!error) {
       return WrappedComponent;
     }
-    return <Error error={error}/>;
+    return <Error error={error} />;
   }
 }
