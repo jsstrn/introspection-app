@@ -22,8 +22,13 @@ class App extends Component {
 
   async componentDidMount() {
     // eslint-disable-next-line
-    const regex = new RegExp("(?:(?:^|.*;s*)users*=s*([^;]*).*$)|^.*$");
-    let cookieValue = document.cookie.replace(regex, "$1");
+    const regexUser = /(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/gm;
+
+    const regexProfile = new RegExp(
+      "(?:(?:^|.*;s*)pictures*=s*([^;]*).*$)|^.*$"
+    );
+    let userVal = unescape(document.cookie.replace(regexUser, "$1"));
+    let profileLink = unescape(document.cookie.replace(regexProfile, "$1"));
     try {
       const data = await introspectionData("introspection");
       const actions = await introspectionData("actions");
@@ -34,7 +39,8 @@ class App extends Component {
 
       this.setState({
         value: {
-          name: cookieValue,
+          name: userVal,
+          profilePic: profileLink,
           office: "Singapore",
           data,
           actions,

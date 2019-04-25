@@ -28,7 +28,7 @@ function NavBar() {
           </Link>
         </NavItem>
         <IntroDataContext.Consumer>
-          {({ name }) =>
+          {({ name, profilePic }) =>
             name ? (
               <React.Fragment>
                 <NavItem>
@@ -42,7 +42,7 @@ function NavBar() {
                       alt="avatar"
                       width="25px"
                       height="25px"
-                      src="https://semantic-ui.com/images/avatar2/large/kristy.png"
+                      src={profilePic}
                       className="rounded-circle"
                     />
                     <span className="text-muted font-weight-bolder">
@@ -70,18 +70,6 @@ function NavBar() {
             <NavItem>
               <Link to="/detailed">
                 <h4 className="text-muted font-weight-bolder">Detailed</h4>
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/profile">
-                <img
-                  alt="avatar"
-                  width="50px"
-                  height="50px"
-                  src="https://semantic-ui.com/images/avatar2/large/kristy.png"
-                  className="rounded-circle"
-                />
-                <span className="text-muted font-weight-bolder">Esther T.</span>
               </Link>
             </NavItem>
           </>
