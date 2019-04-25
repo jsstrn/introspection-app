@@ -1,9 +1,9 @@
 import React from "react";
 
-function getErrorMsg(error, statusCode) {
-  switch (statusCode) {
-    case 401:
-      return error.response.data;
+function getErrorMsg(error) {
+  switch (error) {
+    case "Request failed with status code 401":
+      return "Please login.";
     default:
       return error.message;
   }
@@ -11,11 +11,10 @@ function getErrorMsg(error, statusCode) {
 
 function Error(props) {
   const { error } = props;
-  const { statusCode } = error;
 
   return (
     <div data-cy="error">
-      <h1>{getErrorMsg(error, statusCode)}</h1>
+      <h1>{getErrorMsg(error)}</h1>
     </div>
   );
 }
