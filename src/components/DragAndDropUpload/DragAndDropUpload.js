@@ -49,7 +49,6 @@ function DragAndDropUpload(props) {
           `File upload failed. ${error.response.data.message}`,
           failedAlertOpts
         );
-        console.error(error);
       }
     } else {
       alert("only csv files accepted");
@@ -64,8 +63,7 @@ function DragAndDropUpload(props) {
               <input {...getInputProps()} />
               <div
                 className="ba b--dashed b--light-silver pv4 center tc bw3 br-pill f4"
-                data-testid="uploader"
-              >
+                data-testid="uploader">
                 <i className="fas fa-cloud-upload-alt fa-6x blue" />
                 <p>
                   <span className="fw6 pointer hover-blue">Choose a file</span>{" "}
