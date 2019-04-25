@@ -17,44 +17,59 @@ function NavBar() {
           </Link>
         </NavItem>
         <NavItem>
-          <Link to="/admin">
-            <h4 className="text-muted font-weight-bolder">Admin Panel</h4>
+          <Link to="/radar">
+            <h4 className="text-muted font-weight-bolder">
+              Introspection Radar
+            </h4>
           </Link>
         </NavItem>
-
+        <NavItem>
+          <Link to="/plan">
+            <h4 className="text-muted font-weight-bolder">Action Plan</h4>
+          </Link>
+        </NavItem>
         <IntroDataContext.Consumer>
-          {({ name, profilePic }) =>
-            name ? (
-              <React.Fragment>
-                <NavItem>
-                  <a href={`${api}/auth/logout`}>
-                    <h4 className="text-muted font-weight-bolder">Logout</h4>
-                  </a>
-                </NavItem>
-                <NavItem>
-                  <Link to="/profile">
-                    <img
-                      alt="avatar"
-                      width="25px"
-                      height="25px"
-                      src={`${profilePic}`}
-                      className="rounded-circle"
-                    />
-                    <span className="text-muted font-weight-bolder">
-                      {name}
-                    </span>
-                  </Link>
-                </NavItem>
-              </React.Fragment>
-            ) : (
+          {({ name, profilePic }) => (
+            <React.Fragment>
+              <NavItem>
+                <a href={`${api}/auth/logout`}>
+                  <h4 className="text-muted font-weight-bolder">Logout</h4>
+                </a>
+              </NavItem>
+              <NavItem>
+                <Link to="/profile">
+                  <img
+                    alt="avatar"
+                    width="25px"
+                    height="25px"
+                    src={profilePic}
+                    className="rounded-circle"
+                  />
+                  <span className="text-muted font-weight-bolder">{name}</span>
+                </Link>
+              </NavItem>
               <NavItem>
                 <a href={`${api}/auth/google`}>
                   <h4 className="text-muted font-weight-bolder">Login</h4>
                 </a>
               </NavItem>
-            )
-          }
+            </React.Fragment>
+          )}
         </IntroDataContext.Consumer>
+        <NavItem>
+          <Link to="/admin">
+            <h4 className="text-muted font-weight-bolder">Admin Panel</h4>
+          </Link>
+        </NavItem>
+        {process.env.REACT_APP_FEATURE_TOGGLE_NAVLINKS === "true" && (
+          <>
+            <NavItem>
+              <Link to="/detailed">
+                <h4 className="text-muted font-weight-bolder">Detailed</h4>
+              </Link>
+            </NavItem>
+          </>
+        )}
       </Nav>
     </div>
   );

@@ -9,7 +9,7 @@ const getUrl = api ? api : "http://localhost:7890";
 const alertOpts = {
   effect: "genie",
   position: "top-right",
-  timeout: 1500
+  timeout: 3000
 };
 const failedAlertOpts = {
   effect: "genie",
