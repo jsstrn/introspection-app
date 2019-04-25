@@ -11,7 +11,19 @@ class BrickContainer extends Component {
   static contextType = IntroDataContext;
   constructor(props, context) {
     super(props, context);
-    this.state = { tableKey: "", office: this.props.office };
+    this.state = { tableKey: "", office: "" };
+  }
+
+  componentDidMount() {
+    this.setState({
+      office: this.props.office
+    });
+  }
+  componentDidUpdate() {
+    if (this.props.office !== this.state.office)
+      this.setState({
+        office: this.props.office
+      });
   }
 
   handleActionSelector = key => {
