@@ -19,7 +19,7 @@ const value = {
 };
 const brickContainer = (
   <IntroDataContext.Provider value={value}>
-    <BrickContainer category="Diversity and Inclusion" />
+    <BrickContainer category="Diversity and Inclusion" office="Singapore" />
   </IntroDataContext.Provider>
 );
 

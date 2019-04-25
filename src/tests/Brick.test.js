@@ -30,7 +30,6 @@ describe("renders a brick", () => {
   it("should be able to display action headers", () => {
     const { getByTestId } = render(
       <Brick
-        count={null}
         brickObject={brickObject}
         levelArray={levelArray}
         handleActions={null}

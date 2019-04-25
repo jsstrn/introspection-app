@@ -11,7 +11,7 @@ class BrickContainer extends Component {
   static contextType = IntroDataContext;
   constructor(props, context) {
     super(props, context);
-    this.state = { tableKey: "" };
+    this.state = { tableKey: "", office: this.props.office };
   }
 
   handleActionSelector = key => {
@@ -19,7 +19,8 @@ class BrickContainer extends Component {
   };
 
   render() {
-    const { office, data, actions } = this.context;
+    const { data, actions } = this.context;
+    const { office } = this.state;
     const { category } = this.props;
     let { tableKey } = this.state;
     const brickObject = getBrickTable(data, office, category, actions);
@@ -41,7 +42,6 @@ class BrickContainer extends Component {
         <Brick
           brickObject={brickObject}
           levelArray={levelArray}
-          count={data.map(a => a.length)}
           handleActions={this.handleActionSelector}
           tableKey={tableKey}
         />

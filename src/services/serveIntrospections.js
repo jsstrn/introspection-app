@@ -16,7 +16,12 @@ const getCategoriesByOffice = (data, office) => {
 };
 
 const getLevelTable = (data, office, categoryName, level) => {
-  const tarOffice = data.filter(person => person.office === office);
+  const tarOffice = data.filter(elem => {
+    if (office.toLowerCase() === "all") {
+      return true;
+    }
+    return elem.office === office;
+  });
   return tarOffice.filter(person =>
     person.categories.some(category => {
       return category.level === level && category.category === categoryName;

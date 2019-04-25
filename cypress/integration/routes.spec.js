@@ -45,14 +45,14 @@ describe("Routes", () => {
 
   it("goes to the detailed action plan page when a category in the table on the homepage is clicked", () => {
     cy.visit("/", { timeout: 120000 });
-    cy.get('a[href="/slice/Economic Justice"]')
+    cy.get(".categoryLink")
       .first()
       .click();
-    cy.url().should("include", "/slice/Economic%20Justice");
-    cy.get("h1").should("contain", "Economic Justice");
+    cy.url().should("include", "/slice");
+    cy.get("h1").should("contain", "Society and Privilege");
     cy.get('p[data-testid="action-val-1"]')
       .first()
-      .should("contain", "2");
+      .should("contain", "1");
   });
 
   it("goes to radar page", () => {
