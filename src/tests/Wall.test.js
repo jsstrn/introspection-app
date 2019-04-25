@@ -1,7 +1,7 @@
 import "jest-dom/extend-expect";
 import "react-testing-library/cleanup-after-each";
 import React from "react";
-import { render } from "react-testing-library";
+import { render, fireEvent } from "react-testing-library";
 import { MemoryRouter } from "react-router-dom";
 import Wall from "../components/Wall/Wall.jsx";
 import IntroDataContext from "../IntroDataContext";
@@ -80,5 +80,24 @@ describe("Wall", () => {
       "href",
       "/slice/Economic Justice"
     );
+  });
+  it("renders correct data when filter by office", () => {
+    const { getByText, getByTestId } = render(
+      <MemoryRouter>
+        <IntroDataContext.Provider value={value}>
+          <Wall office={office} />
+        </IntroDataContext.Provider>
+      </MemoryRouter>
+    );
+    fireEvent.click(getByText("Thailand"));
+    expect(getByText("Thailand's Action Plan")).toBeInTheDocument();
+    expect(
+      getByTestId("Religious Minorities-Would like to explore").innerHTML
+    ).toBe("0");
+    fireEvent.click(getByText("All"));
+    expect(getByText("All Offices' Action Plan")).toBeInTheDocument();
+    expect(
+      getByTestId("Society and Privilege-Would like to deepen").innerHTML
+    ).toBe("3");
   });
 });

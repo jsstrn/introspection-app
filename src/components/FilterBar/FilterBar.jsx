@@ -1,13 +1,13 @@
 import React from "react";
 
 const FilterBar = props => {
-  const { offices, selected, handleClick } = props;
+  const { offices, selected, handleClick, className } = props;
   const getClass = (office, selected) => {
     return office === selected ? "btn btn-primary" : "btn btn-outline-primary";
   };
 
   return (
-    <div className="btn-group" role="group">
+    <div className={`btn-group ${className}`} role="group">
       {offices.map((office, index) => (
         <button
           key={index}

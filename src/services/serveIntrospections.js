@@ -23,7 +23,12 @@ const getLevelTable = (data, office, categoryName, level) => {
 };
 
 const getBrickElement = (data, office, categoryName, action) => {
-  const tarOffice = data.filter(elem => elem.office === office);
+  const tarOffice = data.filter(elem => {
+    if (office.toLowerCase() === "all") {
+      return true;
+    }
+    return elem.office === office;
+  });
   const persons = [];
   tarOffice.forEach(person => {
     if (

@@ -13,6 +13,7 @@ const value = {
     "Would like to deepen",
     "Would like to share"
   ],
+  office: "Singapore",
   error: null,
   isLoading: false
 };

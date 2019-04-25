@@ -38,6 +38,8 @@ describe("Routes", () => {
     }
 
     cy.get("h1.wall-title").should("contain", "Singapore's Action Plan");
+    cy.get(".actionPlanOfficeFilter").should("contain", "Thailand");
+    cy.get(".categoryLink").should("contain", "Society and Privilege");
     cy.get("tr td").should("have.attr", "data-testid");
   });
 
