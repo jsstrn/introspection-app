@@ -2,11 +2,9 @@ import React from "react";
 import Dropzone from "react-dropzone";
 import Alert from "react-s-alert";
 import axios from "axios";
+import api from "../../services/api";
 
-const isDev = process.env.NODE_ENV !== "production";
-const getUrl = isDev
-  ? "http://localhost:7890"
-  : "https://auto-introspection-api.herokuapp.com";
+const getUrl = api ? api : "http://localhost:7890";
 
 const alertOpts = {
   effect: "genie",
@@ -32,7 +30,8 @@ function DragAndDropUpload(props) {
           method: "POST",
           url: `${getUrl}/upload`,
           data: formData,
-          config: { headers: { "Content-Type": "multipart/form-data" } }
+          config: { headers: { "Content-Type": "multipart/form-data" } },
+          withCredentials: true
         });
         if (res.status !== 201) {
           Alert.error("File upload failed, please try again", failedAlertOpts);
