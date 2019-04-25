@@ -58,50 +58,13 @@ describe("Routes", () => {
       .should("contain", "3");
   });
 
-  it("goes to radar page", () => {
+  it.skip("goes to admin panel page", () => {
     cy.visit("/");
 
     cy.get("h4")
-      .contains("Introspection Radar")
+      .contains("Admin Panel")
       .click();
 
-    cy.url().should("include", "/radar");
-
-    if (Cypress.env("FEATURE_TOGGLE_PIZZA") === "true") {
-      cy.get("h1.radar-title").should("contain", "Introspection Radar");
-    }
-  });
-
-  it("goes to action plan page", () => {
-    cy.visit("/");
-
-    cy.get("h4")
-      .contains("Action Plan")
-      .click();
-
-    cy.url().should("include", "/plan");
-  });
-
-  it("goes to admin panel page", () => {
-    if (Cypress.env("FEATURE_TOGGLE_NAVLINKS") === "true") {
-      cy.visit("/");
-
-      cy.get("h4")
-        .contains("Admin Panel")
-        .click();
-
-      cy.url().should("include", "/admin");
-    }
-  });
-
-  xit("goes to detailed page", () => {
-    if (Cypress.env("FEATURE_TOGGLE_NAVLINKS") === "true") {
-      cy.visit("/");
-      cy.get("h4")
-        .contains("Detailed")
-        .click();
-      cy.url().should("include", "/detailed");
-      cy.get("h1").should("contain", "Equitable Tech");
-    }
+    cy.url().should("include", "/admin");
   });
 });

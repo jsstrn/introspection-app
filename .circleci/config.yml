@@ -151,7 +151,7 @@ jobs:
 
       - run:
           name: Run end to end tests
-          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false,FEATURE_TOGGLE_NAVLINKS=false --config baseUrl=$BASE_URL
+          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=true --config baseUrl=$BASE_URL
 
       - store_artifacts:
           path: cypress/screenshots
@@ -200,7 +200,7 @@ jobs:
 
       - run:
           name: Run end to end tests
-          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false,FEATURE_TOGGLE_NAVLINKS=false --config baseUrl=$BASE_URL
+          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=true --config baseUrl=$BASE_URL
 
       - store_artifacts:
           path: cypress/screenshots
@@ -249,7 +249,7 @@ jobs:
 
       - run:
           name: Run end to end tests
-          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=false,FEATURE_TOGGLE_NAVLINKS=false --config baseUrl=$BASE_URL
+          command: $(npm bin)/cypress run --env FEATURE_TOGGLE_PIZZA=true --config baseUrl=$BASE_URL
 
       - store_artifacts:
           path: cypress/screenshots

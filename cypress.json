@@ -1,7 +1,6 @@
 {
   "baseUrl": "http://localhost:3000",
   "env": {
-    "FEATURE_TOGGLE_PIZZA": "true",
-    "FEATURE_TOGGLE_NAVLINKS": "true"
+    "FEATURE_TOGGLE_PIZZA": "true"
   }
 }
