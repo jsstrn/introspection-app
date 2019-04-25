@@ -15,8 +15,14 @@ export default class Wall extends Component {
   constructor(props, context) {
     super(props, context);
     this.state = {
-      office: this.context.office
+      office: ""
     };
+  }
+
+  componentDidMount() {
+    this.setState({
+      office: "All"
+    });
   }
 
   handleOfficeSelect = office => {
@@ -30,7 +36,7 @@ export default class Wall extends Component {
     const offices = ["All", ...getAvailableOffices(data)];
     return (
       <Container className="mx-auto mt-5 mb6">
-        <div>
+        <div className="tc center mb3 mt3">
           <FilterBar
             handleClick={this.handleOfficeSelect}
             offices={offices}
