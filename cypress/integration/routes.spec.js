@@ -34,10 +34,13 @@ describe("Routes", () => {
     cy.scrollTo("bottom");
 
     if (Cypress.env("FEATURE_TOGGLE_PIZZA") === "true") {
-      cy.get("h1.radar-title").should("contain", "Introspection Radar");
+      cy.get("h1.radar-title").should(
+        "contain",
+        "All Offices' Introspection Radar"
+      );
     }
 
-    cy.get("h1.wall-title").should("contain", "Singapore's Action Plan");
+    cy.get("h1.wall-title").should("contain", "All Offices' Action Plan");
     cy.get(".actionPlanOfficeFilter").should("contain", "Thailand");
     cy.get(".categoryLink").should("contain", "Society and Privilege");
     cy.get("tr td").should("have.attr", "data-testid");
@@ -52,7 +55,7 @@ describe("Routes", () => {
     cy.get("h1").should("contain", "Society and Privilege");
     cy.get('p[data-testid="action-val-1"]')
       .first()
-      .should("contain", "1");
+      .should("contain", "3");
   });
 
   it("goes to radar page", () => {
