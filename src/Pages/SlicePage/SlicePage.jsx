@@ -1,5 +1,12 @@
 import React, { Component } from "react";
-import { Container, Row } from "reactstrap";
+import {
+  Container,
+  Row,
+  UncontrolledDropdown,
+  DropdownToggle,
+  DropdownMenu,
+  DropdownItem
+} from "reactstrap";
 import HPJumbotron from "../../components/HPJumbotron/HPJumbotron";
 import SliceDetails from "../../components/SliceDetails/SliceDetails";
 import BrickContainer from "../../components/BrickContainer/BrickContainer";
@@ -22,6 +29,10 @@ export class SlicePage extends Component {
     this.setState({ office: officeSelected });
   };
 
+  handleCategorySelector = event => {
+    this.setState({ category: event.currentTarget.textContent });
+  };
+
   componentDidMount() {
     this.setState({
       office: this.props.location
@@ -39,18 +50,39 @@ export class SlicePage extends Component {
     const { data } = this.context;
     const { office, category } = this.state;
     const offices = ["All", ...getAvailableOffices(data)];
+    const categories = [
+      "Society and Privilege",
+      "Religious Minorities",
+      "Diversity and Inclusion",
+      "Economic Justice",
+      "Racial Minorities",
+      "Sexual Orientation and Gender Identity",
+      "Equitable Tech",
+      "Climate Injustice"
+    ];
+
     return (
       <>
         <HPJumbotron />
         <Container className="mx-auto mb5">
-          <Row>
+          <div className="flex justify-between">
             <FilterBar
               handleClick={this.handleOfficeSelect}
               offices={offices}
               selected={office}
               className="actionPlanOfficeFilter"
             />
-          </Row>
+            <UncontrolledDropdown>
+              <DropdownToggle caret>{category}</DropdownToggle>
+              <DropdownMenu>
+                {categories.map(a => (
+                  <DropdownItem onClick={this.handleCategorySelector}>
+                    {a}
+                  </DropdownItem>
+                ))}
+              </DropdownMenu>
+            </UncontrolledDropdown>
+          </div>
           <Row>
             <SliceDetails category={category} />
           </Row>
