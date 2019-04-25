@@ -3,6 +3,7 @@ import { Nav, NavItem } from "reactstrap";
 import { NavLink as Link } from "react-router-dom";
 import "./NavBar.css";
 import IntroDataContext from "../../IntroDataContext";
+import api from "../../services/api";
 
 function NavBar() {
   return (
@@ -32,7 +33,7 @@ function NavBar() {
             name ? (
               <React.Fragment>
                 <NavItem>
-                  <a href="http://localhost:7890/auth/logout">
+                  <a href={`${api}/auth/logout`}>
                     <h4 className="text-muted font-weight-bolder">Logout</h4>
                   </a>
                 </NavItem>
@@ -53,7 +54,7 @@ function NavBar() {
               </React.Fragment>
             ) : (
               <NavItem>
-                <a href="http://localhost:7890/auth/google">
+                <a href={`${api}/auth/google`}>
                   <h4 className="text-muted font-weight-bolder">Login</h4>
                 </a>
               </NavItem>
