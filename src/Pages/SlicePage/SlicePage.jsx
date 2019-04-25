@@ -75,8 +75,10 @@ export class SlicePage extends Component {
             <UncontrolledDropdown>
               <DropdownToggle caret>{category}</DropdownToggle>
               <DropdownMenu>
-                {categories.map(a => (
-                  <DropdownItem onClick={this.handleCategorySelector}>
+                {categories.map((a, index) => (
+                  <DropdownItem
+                    key={index}
+                    onClick={this.handleCategorySelector}>
                     {a}
                   </DropdownItem>
                 ))}

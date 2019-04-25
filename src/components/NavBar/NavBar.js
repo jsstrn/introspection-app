@@ -17,17 +17,11 @@ function NavBar() {
           </Link>
         </NavItem>
         <NavItem>
-          <Link to="/radar">
-            <h4 className="text-muted font-weight-bolder">
-              Introspection Radar
-            </h4>
+          <Link to="/admin">
+            <h4 className="text-muted font-weight-bolder">Admin Panel</h4>
           </Link>
         </NavItem>
-        <NavItem>
-          <Link to="/plan">
-            <h4 className="text-muted font-weight-bolder">Action Plan</h4>
-          </Link>
-        </NavItem>
+
         <IntroDataContext.Consumer>
           {({ name, profilePic }) =>
             name ? (
@@ -61,20 +55,6 @@ function NavBar() {
             )
           }
         </IntroDataContext.Consumer>
-        {process.env.REACT_APP_FEATURE_TOGGLE_NAVLINKS === "true" && (
-          <>
-            <NavItem>
-              <Link to="/admin">
-                <h4 className="text-muted font-weight-bolder">Admin Panel</h4>
-              </Link>
-            </NavItem>
-            <NavItem>
-              <Link to="/detailed">
-                <h4 className="text-muted font-weight-bolder">Detailed</h4>
-              </Link>
-            </NavItem>
-          </>
-        )}
       </Nav>
     </div>
   );
