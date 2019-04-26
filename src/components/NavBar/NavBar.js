@@ -36,18 +36,22 @@ function NavBar() {
                   <h4 className="text-muted font-weight-bolder">Logout</h4>
                 </a>
               </NavItem>
-              <NavItem>
-                <Link to="/profile">
-                  <img
-                    alt="avatar"
-                    width="25px"
-                    height="25px"
-                    src={profilePic}
-                    className="rounded-circle"
-                  />
-                  <span className="text-muted font-weight-bolder">{name}</span>
-                </Link>
-              </NavItem>
+              {profilePic && (
+                <NavItem>
+                  <Link to="/profile">
+                    <img
+                      alt=""
+                      width="30px"
+                      height="30px"
+                      src={profilePic}
+                      className="rounded-circle"
+                    />
+                    <span className="text-muted font-weight-bolder">
+                      {name}
+                    </span>
+                  </Link>
+                </NavItem>
+              )}
               <NavItem>
                 <a href={`${api}/auth/google`}>
                   <h4 className="text-muted font-weight-bolder">Login</h4>
