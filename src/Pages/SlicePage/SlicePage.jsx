@@ -12,7 +12,10 @@ import SliceDetails from "../../components/SliceDetails/SliceDetails";
 import BrickContainer from "../../components/BrickContainer/BrickContainer";
 import IntroDataContext from "../../IntroDataContext";
 import FilterBar from "../../components/FilterBar/FilterBar";
-import { getAvailableOffices } from "../../services/serveIntrospections";
+import {
+  getAvailableOffices,
+  getCategories
+} from "../../services/serveIntrospections";
 
 export class SlicePage extends Component {
   static contextType = IntroDataContext;
@@ -50,17 +53,7 @@ export class SlicePage extends Component {
     const { data } = this.context;
     const { office, category } = this.state;
     const offices = ["All", ...getAvailableOffices(data)];
-    const categories = [
-      "Society and Privilege",
-      "Religious Minorities",
-      "Diversity and Inclusion",
-      "Economic Justice",
-      "Racial Minorities",
-      "Sexual Orientation and Gender Identity",
-      "Equitable Tech",
-      "Climate Injustice"
-    ];
-
+    const categories = getCategories(data);
     return (
       <>
         <HPJumbotron />
@@ -78,7 +71,8 @@ export class SlicePage extends Component {
                 {categories.map((a, index) => (
                   <DropdownItem
                     key={index}
-                    onClick={this.handleCategorySelector}>
+                    onClick={this.handleCategorySelector}
+                  >
                     {a}
                   </DropdownItem>
                 ))}

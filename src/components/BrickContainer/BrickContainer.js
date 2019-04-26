@@ -39,7 +39,7 @@ class BrickContainer extends Component {
     if (!tableKey) {
       tableKey = Object.keys(brickObject)[0];
     }
-    const levelArray = getLevelTable(data, office, category, "4. Activated");
+    const levelArray = getLevelTable(data, office, category, "Activated");
 
     const getPeople = () => {
       if (this.state.tableKey === "Activated Individuals") {

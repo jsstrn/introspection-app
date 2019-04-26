@@ -24,7 +24,10 @@ const getLevelTable = (data, office, categoryName, level) => {
   });
   return tarOffice.filter(person =>
     person.categories.some(category => {
-      return category.level === level && category.category === categoryName;
+      return (
+        category.level.includes(level.trim()) &&
+        category.category === categoryName
+      );
     })
   );
 };

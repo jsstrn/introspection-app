@@ -21,10 +21,10 @@ class Radar extends Component {
     };
   }
 
-  componentDidMount(){
+  componentDidMount() {
     this.setState({
       office: "All"
-    })
+    });
   }
 
   handleOfficeSelect = office => {
@@ -38,10 +38,10 @@ class Radar extends Component {
     const offices = ["All", ...getAvailableOffices(data)];
     const filteredData = data.filter(a => {
       if (office === "All") {
-        return true
-      } 
-     return a.office === office
-    })
+        return true;
+      }
+      return a.office === office;
+    });
     const radius = levelArrayRandomized(filteredData);
     const theta = thetaArray(filteredData);
     const names = nameArray(filteredData);
@@ -56,7 +56,8 @@ class Radar extends Component {
           />
         </div>
         <h1 className="tc radar-title text-info font-weight-bolder">
-          {office === 'All' ? "All Offices' " : `${office}'s ` }Introspection Radar
+          {office === "All" ? "All Offices' " : `${office}'s `}Introspection
+          Radar
         </h1>
         <Plot
           className="tc mt0 center"
@@ -113,7 +114,7 @@ class Radar extends Component {
             dragmode: "pan",
             paper_bgcolor: "rgba(0,0,0,0)",
             plot_bgcolor: "rgba(0,0,0,0)",
-            margin: { r: 200, l: 200, t: 50 },
+            margin: { r: 200, l: 200, t: 0, b: 0 },
             width: 1000,
             height: 1000,
             showlegend: false,
