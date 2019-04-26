@@ -18,18 +18,55 @@ class App extends Component {
         isLoading: true
       }
     };
+    this.updateIntros = async () => {
+      try {
+        // eslint-disable-next-line
+        const regexUser = /(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/gm;
+
+        const regexProfile = new RegExp(
+          "(?:(?:^|.*;s*)pictures*=s*([^;]*).*$)|^.*$"
+        );
+        let userVal = unescape(document.cookie.replace(regexUser, "$1"));
+        let profileLink = unescape(document.cookie.replace(regexProfile, "$1"));
+        const data = await introspectionData("introspection");
+        const actions = await introspectionData("actions");
+
+        if (data.length === 0 || actions.length === 0) {
+          throw new Error("No data available");
+        }
+
+        this.setState({
+          value: {
+            name: userVal,
+            profilePic: profileLink,
+            office: "Singapore",
+            data,
+            actions,
+            isLoading: false,
+            updateIntros: this.updateIntros
+          }
+        });
+      } catch (error) {
+        this.setState({
+          value: {
+            error,
+            isLoading: false
+          }
+        });
+      }
+    };
   }
 
   async componentDidMount() {
-    // eslint-disable-next-line
-    const regexUser = /(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/gm;
-
-    const regexProfile = new RegExp(
-      "(?:(?:^|.*;s*)pictures*=s*([^;]*).*$)|^.*$"
-    );
-    let userVal = unescape(document.cookie.replace(regexUser, "$1"));
-    let profileLink = unescape(document.cookie.replace(regexProfile, "$1"));
     try {
+      // eslint-disable-next-line
+      const regexUser = /(?:(?:^|.*;\s*)user\s*\=\s*([^;]*).*$)|^.*$/gm;
+
+      const regexProfile = new RegExp(
+        "(?:(?:^|.*;s*)pictures*=s*([^;]*).*$)|^.*$"
+      );
+      let userVal = unescape(document.cookie.replace(regexUser, "$1"));
+      let profileLink = unescape(document.cookie.replace(regexProfile, "$1"));
       const data = await introspectionData("introspection");
       const actions = await introspectionData("actions");
 
@@ -44,14 +81,16 @@ class App extends Component {
           office: "Singapore",
           data,
           actions,
-          isLoading: false
+          isLoading: false,
+          updateIntros: this.updateIntros
         }
       });
     } catch (error) {
       this.setState({
         value: {
           error,
-          isLoading: false
+          isLoading: false,
+          updateIntros: this.updateIntros
         }
       });
     }

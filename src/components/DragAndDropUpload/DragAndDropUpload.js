@@ -17,6 +17,7 @@ const failedAlertOpts = {
   timeout: "none"
 };
 function DragAndDropUpload(props) {
+  const { updateIntros } = props;
   const handleOnDrop = async (acceptedFile, rejectedFiles) => {
     if (rejectedFiles.length > 1) {
       alert("You may only upload one file");
@@ -37,9 +38,11 @@ function DragAndDropUpload(props) {
           Alert.error("File upload failed, please try again", failedAlertOpts);
         } else {
           Alert.success("Upload successful", alertOpts);
+
           window.setTimeout(() => {
             props.history.push("/");
           }, 1500);
+          updateIntros();
         }
       } catch (error) {
         Alert.error(

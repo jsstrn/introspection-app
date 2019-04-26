@@ -1,12 +1,20 @@
 import { Container } from "reactstrap";
 import React, { Component } from "react";
 import DragAndDropUpload from "../../components/DragAndDropUpload/DragAndDropUpload";
+import IntroDataContext from "../../IntroDataContext";
 
 export class AdminPage extends Component {
   renderCsvUploader() {
     return (
       <React.Fragment>
-        <DragAndDropUpload history={this.props.history} />
+        <IntroDataContext.Consumer>
+          {({ updateIntros }) => (
+            <DragAndDropUpload
+              updateIntros={updateIntros}
+              history={this.props.history}
+            />
+          )}
+        </IntroDataContext.Consumer>
       </React.Fragment>
     );
   }
