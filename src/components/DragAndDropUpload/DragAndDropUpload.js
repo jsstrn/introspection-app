@@ -45,10 +45,7 @@ function DragAndDropUpload(props) {
           updateIntros();
         }
       } catch (error) {
-        Alert.error(
-          `File upload failed. ${error.response.data.message}`,
-          failedAlertOpts
-        );
+        Alert.error(`File upload failed.`, failedAlertOpts);
       }
     } else {
       alert("only csv files accepted");

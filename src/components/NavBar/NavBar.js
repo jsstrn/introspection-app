@@ -23,11 +23,6 @@ function NavBar() {
             </h4>
           </Link>
         </NavItem>
-        <NavItem>
-          <Link to="/plan">
-            <h4 className="text-muted font-weight-bolder">Action Plan</h4>
-          </Link>
-        </NavItem>
         <IntroDataContext.Consumer>
           {({ name, profilePic }) => (
             <React.Fragment>
